@@ -66,11 +66,14 @@ The reuse check stores **links only** — page text is fetched on demand (looked
 
 ## Note on excluded files
 
-The full content database is included **gzipped**: `projects/testlify/content-database.csv.gz` (~23 MB) — the
-raw `.csv` is 103 MB, over GitHub's 100 MB hard limit, so `gunzip` it to use (`gunzip -k content-database.csv.gz`).
+Large data files are included **compressed** (the raw versions exceed GitHub's 100 MB limit or just bloat the
+repo). Decompress before use:
+- `projects/testlify/content-database.csv.gz` (~23 MB) → `gunzip -k content-database.csv.gz` (the 103 MB catalogue — every page's full content; this is what the reuse-check RAG runs against).
+- `projects/testlify/asset-engine/competitor-study/_work/competitor-formats-master.csv.gz` (~9 MB) → `gunzip -k …` (the competitor-formats master dataset).
+- `projects/testlify/asset-engine/competitor-study/competitor-study-raw.tar.gz` (~8 MB) and `…/study-trends/study-trends-raw.tar.gz` (~13 MB) → `tar -xzf …` to restore each method's `_raw/` scrape data (Semrush exports, Reddit dumps).
 
-Other large/derived/regenerable artifacts are **git-ignored** (see `.gitignore`) to keep the repo lean:
-- the embeddings index (`content-index/`) and raw scrape dumps (`_raw/`) — regenerable from the scripts in `workflows/00-foundation/scripts/`;
+Only truly **derived/regenerable** bulk is left out:
+- the embeddings index (`content-index/`, ~159 MB) — rebuild with `rag.py index` from the content database;
 - `node_modules/`, backups (`*.bak`), OS files, and the GitHub-Pages publish clone (`_pages-repo/`).
 
 Credentials are **never** in this repo — they live in a `chmod 600` file outside the project tree.
