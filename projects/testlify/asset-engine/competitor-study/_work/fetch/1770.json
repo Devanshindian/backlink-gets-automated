@@ -1,0 +1,7 @@
+{
+  "rowid": "1770",
+  "url": "http://www.testdome.com/Programming-Tests/Ruby/52",
+  "status": "ok",
+  "method": "webfetch",
+  "text": "Ruby Online Test - TestDome\n\nTestDome offers a Ruby online test designed to evaluate real-world programming skills with AI proctoring capabilities.\n\nTest Structure: The assessment focuses on live coding problems covering: JSON serialization/deserialization for web requests; Bug identification and exception handling; Text data extraction using Regex.\n\nSample Questions: Three public practice questions are available:\n1. File Owners (Easy, 10 min): Implement a function that groups file names by owner using hash manipulation\n2. Pipeline (Hard, 10 min): Create a higher-order function that chains multiple functions together\n3. Student Records (Hard, 15 min): Build a filter method accepting lambda functions to process student data records\n\nSkills Assessed: The test evaluates proficiency in Ruby fundamentals including arrays, hashes, inheritance, OOP, JSON serialization, regex, exception handling, and functional programming concepts like closures and lambda functions.\n\nUser Groups: Jobseekers: Practice free and earn certificates by scoring in the top 25%. Companies: Screen candidates starting at $7 per candidate.\n\nCredentials: TestDome is 'used by' major organizations including Adobe, McAfee, Turkish Airlines, and UNICEF."
+}

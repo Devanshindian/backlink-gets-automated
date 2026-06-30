@@ -1,0 +1,807 @@
+{
+  "merges": [
+    {
+      "keep": 119,
+      "absorb": [
+        10,
+        590,
+        655,
+        123,
+        84,
+        134
+      ],
+      "canonical_name": "Testlify State of Skills-Based Hiring 2026: Annual Benchmark Report (Adoption, Completion, AI Cheating, Quality-of-Hire)"
+    },
+    {
+      "keep": 120,
+      "absorb": [
+        11,
+        12,
+        13,
+        407
+      ],
+      "canonical_name": "State of Hiring Assessment 2026: 100+ Original Statistics on Skills Tests, AI Interviews & Screening Outcomes"
+    },
+    {
+      "keep": 563,
+      "absorb": [
+        263,
+        109,
+        427,
+        385,
+        662,
+        449
+      ],
+      "canonical_name": "Free Skills Assessment Library: Role-Based Tests with Public Sample Questions, Difficulty Tags & Benchmark Pass Rates"
+    },
+    {
+      "keep": 309,
+      "absorb": [
+        39,
+        57,
+        46,
+        482,
+        177
+      ],
+      "canonical_name": "Pre-Employment Assessment: The Complete Guide to Test Types, Validity, Bias & Candidate Experience"
+    },
+    {
+      "keep": 639,
+      "absorb": [
+        44,
+        60,
+        620,
+        83
+      ],
+      "canonical_name": "The Independent Pre-Employment Assessment & Skills Testing Platform Comparison 2026 (Buyer's Guide)"
+    },
+    {
+      "keep": 17,
+      "absorb": [
+        18,
+        256
+      ],
+      "canonical_name": "Hiring Metrics Master Guide: 20+ KPIs with Benchmarks, Formulas & Assessment-Quality Tracking (Interactive Calculator)"
+    },
+    {
+      "keep": 16,
+      "absorb": [
+        657,
+        126,
+        468
+      ],
+      "canonical_name": "Recruiting Metrics Benchmark Report: Time-to-Hire, Cost-per-Hire & Quality-of-Hire by Industry, Role & Company Size"
+    },
+    {
+      "keep": 122,
+      "absorb": [
+        346,
+        603,
+        602,
+        469,
+        220,
+        695,
+        28
+      ],
+      "canonical_name": "2026 Candidate Experience with Assessments Benchmark Report: Completion, Drop-Off, NPS & Per-Stage Data"
+    },
+    {
+      "keep": 34,
+      "absorb": [
+        5,
+        193,
+        320,
+        182
+      ],
+      "canonical_name": "The Bias-in-Hiring Audit Checklist: Score Your Process Across Bias Risk Points (with Mitigation & Per-Stage Mapping)"
+    },
+    {
+      "keep": 33,
+      "absorb": [
+        217,
+        614
+      ],
+      "canonical_name": "Adverse Impact Calculator: Run the 4/5ths Rule on Your Assessment Results + EEOC/UGESP Compliance Guide (with Worked Examples)"
+    },
+    {
+      "keep": 127,
+      "absorb": [
+        321,
+        388,
+        322
+      ],
+      "canonical_name": "Bias in Pre-Employment Assessments: How Test Design Creates Adverse Impact + Per-Test-Type Bias Audit Checklist"
+    },
+    {
+      "keep": 302,
+      "absorb": [
+        64,
+        167,
+        489,
+        641,
+        347
+      ],
+      "canonical_name": "AI Hiring Tool Risk & Vendor Audit Checklist: Bias, Transparency, Fairness & Candidate Experience Scorecard"
+    },
+    {
+      "keep": 487,
+      "absorb": [
+        300,
+        25,
+        567,
+        2
+      ],
+      "canonical_name": "AI in Hiring & Assessment: The Complete Guide to AI Screening, Interviews & Scoring (Accuracy Data, Bias Risks & Buyer's Checklist)"
+    },
+    {
+      "keep": 488,
+      "absorb": [
+        74
+      ],
+      "canonical_name": "AI in Hiring Resource Hub: Use Cases, Prompts & Weekly Updates on AI Screening, Interviews & Integrity"
+    },
+    {
+      "keep": 8,
+      "absorb": [
+        129
+      ],
+      "canonical_name": "How Online Proctoring Detects Cheating: AI Detection Methods, False-Positive Rates & Platform Comparison"
+    },
+    {
+      "keep": 490,
+      "absorb": [
+        643,
+        644,
+        465
+      ],
+      "canonical_name": "AI Proctoring Buyer's Guide: Methodology, False-Positive Rates, Candidate Experience & NYC LL 144 / Mode-by-Stage Selection"
+    },
+    {
+      "keep": 492,
+      "absorb": [
+        665
+      ],
+      "canonical_name": "NYC Local Law 144 / Ethical AI Hiring Compliance Guide: Reading a Bias Audit + State-by-State Vendor Checklist"
+    },
+    {
+      "keep": 37,
+      "absorb": [
+        170,
+        318
+      ],
+      "canonical_name": "Time-to-Hire: Definition, Benchmarks, Formula & How Skills Assessments Reduce It (with Industry Data)"
+    },
+    {
+      "keep": 21,
+      "absorb": [
+        229,
+        374,
+        581
+      ],
+      "canonical_name": "Bad Hire Cost Calculator: Estimate Your True Cost by Role, Seniority & Industry + Assessment ROI Offset"
+    },
+    {
+      "keep": 22,
+      "absorb": [
+        23,
+        87,
+        137,
+        366,
+        583,
+        659,
+        111
+      ],
+      "canonical_name": "The ROI of Pre-Employment Skills Assessments: Calculator + Benefit Benchmarks by Role (Quality-of-Hire & Time-to-Hire)"
+    },
+    {
+      "keep": 582,
+      "absorb": [
+        107,
+        313,
+        143
+      ],
+      "canonical_name": "Skills Assessment ROI Calculator & Benchmarks: Time-to-Hire, Cost-per-Hire & Savings by Role and Volume"
+    },
+    {
+      "keep": 290,
+      "absorb": [
+        564,
+        585,
+        359,
+        668,
+        115
+      ],
+      "canonical_name": "Turnover & Attrition Risk Calculator: Build a Flight-Risk Score from Assessment Data + Cost-per-Departure Benchmarks"
+    },
+    {
+      "keep": 722,
+      "absorb": [
+        315,
+        584,
+        113,
+        316,
+        146
+      ],
+      "canonical_name": "Quality of Hire & Retention Calculator: Test Whether Assessment Scores Predict Who Stays & Performs (Free Excel + Benchmarks)"
+    },
+    {
+      "keep": 307,
+      "absorb": [
+        48,
+        720,
+        243,
+        306,
+        565,
+        296
+      ],
+      "canonical_name": "Skills Gap Analysis Template + Role-by-Role Assessment Map for Hiring Teams"
+    },
+    {
+      "keep": 274,
+      "absorb": [
+        702
+      ],
+      "canonical_name": "Pre-Hire Skills-Gap Assessment Framework: A Scoring Template for Measuring Fit Before You Hire"
+    },
+    {
+      "keep": 47,
+      "absorb": [
+        42,
+        636,
+        155,
+        556,
+        81
+      ],
+      "canonical_name": "Skills-to-Assessment Matrix: Map Role Requirements to the Right Pre-Employment Tests (Free Selector + Sample Questions)"
+    },
+    {
+      "keep": 269,
+      "absorb": [
+        276,
+        238
+      ],
+      "canonical_name": "Pre-Employment Test-Type & Role Selector Guide: Which Assessment Is Right for Your Role"
+    },
+    {
+      "keep": 45,
+      "absorb": [
+        98,
+        484,
+        310,
+        505,
+        356,
+        683
+      ],
+      "canonical_name": "Selection Method Validity Comparison: Which Assessment to Use by Role (Interactive Validity Tool + Decision Tree)"
+    },
+    {
+      "keep": 485,
+      "absorb": [
+        605,
+        312,
+        247,
+        97
+      ],
+      "canonical_name": "AI Resume Screening vs Skills Testing: An Independent Accuracy Benchmark with an Evaluation Rubric"
+    },
+    {
+      "keep": 478,
+      "absorb": [
+        180,
+        267,
+        282
+      ],
+      "canonical_name": "Psychometric Tests for Hiring: Which Type Predicts What, by Role (with Validity Data & Sample Items)"
+    },
+    {
+      "keep": 472,
+      "absorb": [
+        675,
+        560,
+        498
+      ],
+      "canonical_name": "Psychometric Tests vs Skills Assessments: Which Actually Predicts Job Performance? (Original Data Study + Blended Stack Template)"
+    },
+    {
+      "keep": 334,
+      "absorb": [
+        66,
+        169,
+        479,
+        145,
+        43,
+        287
+      ],
+      "canonical_name": "Personality Tests for Hiring: Big 5 vs DISC vs MBTI \u2014 Validity, Legal Defensibility, Role-Fit & Sample Questions"
+    },
+    {
+      "keep": 476,
+      "absorb": [
+        80,
+        336,
+        288,
+        467,
+        477
+      ],
+      "canonical_name": "Cognitive Aptitude Tests in Hiring: Validity Evidence, Score Cutoffs, Sample Questions & Role-Fit Selection Guide"
+    },
+    {
+      "keep": 480,
+      "absorb": [
+        67,
+        112,
+        250
+      ],
+      "canonical_name": "Emotional Intelligence in Hiring: Test Types Compared, Sample Questions, Validity Evidence & a Role-Selection Guide"
+    },
+    {
+      "keep": 673,
+      "absorb": [
+        552,
+        253
+      ],
+      "canonical_name": "Hard Skills vs Soft Skills Assessment Guide: Which to Test, How, and What the Data Shows (with Decision Matrix)"
+    },
+    {
+      "keep": 526,
+      "absorb": [
+        553,
+        75
+      ],
+      "canonical_name": "The Soft Skills Assessment Playbook: How to Test the Most In-Demand Soft Skills \u2014 Sample Tasks & Scoring Rubrics"
+    },
+    {
+      "keep": 56,
+      "absorb": [
+        541,
+        493,
+        239,
+        166
+      ],
+      "canonical_name": "Structured Interview Scorecard Kit: Role-by-Role Competency Question Banks + Scoring Rubrics (with Validity Data)"
+    },
+    {
+      "keep": 680,
+      "absorb": [
+        58,
+        435
+      ],
+      "canonical_name": "Structured vs Unstructured Interviews: The Evidence-Based Verdict + Free Structured Interview Kit"
+    },
+    {
+      "keep": 542,
+      "absorb": [
+        681,
+        547,
+        660,
+        516,
+        544,
+        425
+      ],
+      "canonical_name": "Structured Video Interview Toolkit: Async & Live Question Banks by Role + Scoring Rubric & Completion Benchmarks"
+    },
+    {
+      "keep": 543,
+      "absorb": [
+        59,
+        648
+      ],
+      "canonical_name": "Async vs Live vs AI Video Interviews: Evidence-Based Comparison with Validity Data & a Scoring Rubric"
+    },
+    {
+      "keep": 497,
+      "absorb": [
+        7,
+        545
+      ],
+      "canonical_name": "AI Interviewer Explained: How Automated Video Scoring Works, Accuracy, Bias Risks, Candidate Experience & Vendor Evaluation"
+    },
+    {
+      "keep": 130,
+      "absorb": [
+        15,
+        599
+      ],
+      "canonical_name": "AI Interview Fairness & Transparency Report 2026: Adoption, Anti-Fraud, Completion & Drop-Off Data"
+    },
+    {
+      "keep": 501,
+      "absorb": [
+        91,
+        102,
+        510
+      ],
+      "canonical_name": "Coding Tests in Hiring: The Complete Recruiter's Guide with Sample Questions, Scoring Rubric & Completion-Rate Data"
+    },
+    {
+      "keep": 499,
+      "absorb": [
+        508,
+        246
+      ],
+      "canonical_name": "Coding Test Selection Guide: Which Language/Format Tests to Use for Developer & Engineering Roles (with Sample Problems & Pass-Rate Benchmarks)"
+    },
+    {
+      "keep": 645,
+      "absorb": [
+        506,
+        656
+      ],
+      "canonical_name": "Coding Assessment Platform Comparison 2026: Testlify vs Codility vs HackerRank \u2014 Quality, Candidate Experience & Anti-Cheating Head-to-Head"
+    },
+    {
+      "keep": 503,
+      "absorb": [
+        483
+      ],
+      "canonical_name": "Coding Simulations vs MCQ Tests: Which Predicts Developer Performance (with Sample Simulation Problems)"
+    },
+    {
+      "keep": 504,
+      "absorb": [
+        670,
+        646,
+        724
+      ],
+      "canonical_name": "Live Coding Interview Playbook: Structure, Score & Avoid Bias in Real-Time Technical Interviews (+ Anti-AI-Cheating Checklist)"
+    },
+    {
+      "keep": 507,
+      "absorb": [
+        348,
+        197
+      ],
+      "canonical_name": "Technical Interview Process Playbook: Multi-Stage Loop, Difficulty-Tiered Question Bank, Scorecard & Pass-Rate Benchmarks"
+    },
+    {
+      "keep": 548,
+      "absorb": [
+        95,
+        206,
+        333,
+        245,
+        549,
+        710,
+        517,
+        551
+      ],
+      "canonical_name": "Job Simulation & Work-Sample Kit: Role-by-Role Task Templates, Validity Benchmarks & Scoring Rubrics"
+    },
+    {
+      "keep": 332,
+      "absorb": [
+        277,
+        184
+      ],
+      "canonical_name": "Virtual Job Tryout / Assessment Center vs Skills Test: Role-by-Role Comparison Guide"
+    },
+    {
+      "keep": 51,
+      "absorb": [
+        52,
+        178
+      ],
+      "canonical_name": "The Complete Hiring Process Guide: Step-by-Step with Assessment Templates, Scorecards & Evidence-Based Fixes"
+    },
+    {
+      "keep": 694,
+      "absorb": [
+        352,
+        557,
+        268,
+        353,
+        55
+      ],
+      "canonical_name": "Candidate Selection Process Toolkit: Weighted Scorecard, Threshold/Cutoff Guide, Rubrics & Role-Specific Test Recommendations"
+    },
+    {
+      "keep": 555,
+      "absorb": [
+        559,
+        684
+      ],
+      "canonical_name": "Candidate Screening Methods Compared: Validity Scores, Bias Risk, Time-Per-Stage & a Funnel-Sequencing Playbook"
+    },
+    {
+      "keep": 688,
+      "absorb": [
+        319,
+        242,
+        569
+      ],
+      "canonical_name": "Pre-Employment Screening Funnel Builder: Sequence Tests, Interviews & Checks by Role (Interactive Template + Conversion Benchmarks)"
+    },
+    {
+      "keep": 554,
+      "absorb": [
+        608,
+        611
+      ],
+      "canonical_name": "End-to-End Hiring Screening Workflow Builder: Stage-by-Stage Template for ATS, Assessment & Interview"
+    },
+    {
+      "keep": 622,
+      "absorb": [
+        108,
+        355,
+        697,
+        293,
+        604,
+        698
+      ],
+      "canonical_name": "Pre-Employment Assessment + ATS Integration Guide: Auto-Dispatch, Score Sync, Auto-Reject & Workflow Automation by Tool"
+    },
+    {
+      "keep": 586,
+      "absorb": [
+        27,
+        222,
+        491,
+        658
+      ],
+      "canonical_name": "The Hiring Funnel Benchmark Report: Stage-by-Stage Drop-Off, Screening Conversion & Time-to-Hire by Role and Company Size"
+    },
+    {
+      "keep": 62,
+      "absorb": [
+        580,
+        196
+      ],
+      "canonical_name": "Assessment Length & Dropout Rate Calculator: Find Your Optimal Test Battery per Stage (+ Pre-Test Communication Checklist)"
+    },
+    {
+      "keep": 661,
+      "absorb": [
+        104,
+        607,
+        527,
+        470,
+        587,
+        612,
+        703,
+        708
+      ],
+      "canonical_name": "Skills-Based Hiring Implementation Playbook: From Job Description to Offer (Templates, Rollout Checklist, Change-Management & Maturity Scorecard)"
+    },
+    {
+      "keep": 49,
+      "absorb": [
+        260,
+        613
+      ],
+      "canonical_name": "Skills-Based Hiring Readiness Audit: Self-Assessment + Degree-Requirement Removal & Transition Template"
+    },
+    {
+      "keep": 103,
+      "absorb": [
+        600,
+        591,
+        562,
+        417,
+        110
+      ],
+      "canonical_name": "Skills-Based Hiring Case Study Hub: Companies with Standardized Before/After KPIs (Time-to-Hire, Interview Reduction & Quality-of-Hire)"
+    },
+    {
+      "keep": 663,
+      "absorb": [
+        136,
+        36,
+        324,
+        418,
+        509
+      ],
+      "canonical_name": "Bias-Free / Blind Hiring Playbook: How Skills Assessments Reduce Adverse Impact & Improve Diversity (Data + Implementation)"
+    },
+    {
+      "keep": 323,
+      "absorb": [
+        35
+      ],
+      "canonical_name": "How Structured Assessments Eliminate Cognitive Bias (Confirmation, Similarity, Contrast, Halo/Horn) \u2014 with Detection Scorecards"
+    },
+    {
+      "keep": 615,
+      "absorb": [
+        689,
+        617,
+        519,
+        38
+      ],
+      "canonical_name": "Hiring Compliance Checklist: EEOC, UGESP, Adverse Impact & Pre-Employment Assessment Legal/Privacy Requirements"
+    },
+    {
+      "keep": 326,
+      "absorb": [
+        539,
+        330,
+        540,
+        671
+      ],
+      "canonical_name": "Assessment Integrity Playbook: Proctoring Level by Role, Cheat-Resistant Questions, Anti-Cheat Settings & Detection"
+    },
+    {
+      "keep": 361,
+      "absorb": [
+        690,
+        521,
+        533
+      ],
+      "canonical_name": "Remote Hiring Assessment Playbook: Format, Proctoring & Which Competencies to Test Differently (Async vs Live + Candidate Experience)"
+    },
+    {
+      "keep": 669,
+      "absorb": [
+        90,
+        259,
+        96,
+        147,
+        494,
+        345,
+        92,
+        522
+      ],
+      "canonical_name": "Tech Hiring Assessment Playbook: Role-by-Role Skills Tests, Sample Questions & Benchmarks for Technical Roles"
+    },
+    {
+      "keep": 118,
+      "absorb": [
+        727,
+        416,
+        473,
+        496
+      ],
+      "canonical_name": "500+ Skills-Based Job Description Template Library: Filter by Role, Level & Competency, with Mapped Assessments"
+    },
+    {
+      "keep": 726,
+      "absorb": [
+        153
+      ],
+      "canonical_name": "JD + Skills-Test Pairing Generator: Enter a Job Title, Get a Draft JD with Pre-Mapped Assessments"
+    },
+    {
+      "keep": 718,
+      "absorb": [
+        100,
+        40,
+        386
+      ],
+      "canonical_name": "Role-by-Role Hiring Kit Library: JD Template + Skills Assessment Rubric + Sample Test Questions per Role"
+    },
+    {
+      "keep": 716,
+      "absorb": [
+        31
+      ],
+      "canonical_name": "Skills-Test Candidate Rejection Email Templates: Stage-by-Stage Scripts + Assessment Feedback for Every Outcome"
+    },
+    {
+      "keep": 723,
+      "absorb": [
+        610
+      ],
+      "canonical_name": "Skills-Based Hiring & Recruitment Plan Template: Fill-in-the-Blank Framework with Assessment Criteria at Every Stage"
+    },
+    {
+      "keep": 682,
+      "absorb": [
+        719,
+        157
+      ],
+      "canonical_name": "Hiring Scorecard Design Guide: Build an Objective Rating Scale + Candidate Scoring Matrix (Free Template + Worked Examples)"
+    },
+    {
+      "keep": 264,
+      "absorb": [
+        148,
+        621,
+        653
+      ],
+      "canonical_name": "Skills Assessment Platform Comparison: Independent Feature, Pricing & Compliance Matrix"
+    },
+    {
+      "keep": 640,
+      "absorb": [
+        642,
+        651,
+        589
+      ],
+      "canonical_name": "AI Hiring & Recruiting Tools Comparison 2026: By Use Case \u2014 Independent Ratings, Pricing & Free Trials"
+    },
+    {
+      "keep": 623,
+      "absorb": [
+        709
+      ],
+      "canonical_name": "Assessment Platform Anti-Cheating Feature Comparison: How Tools Handle AI Cheating, Web Proctoring & Recording"
+    },
+    {
+      "keep": 273,
+      "absorb": [
+        291,
+        524,
+        433,
+        618
+      ],
+      "canonical_name": "Pre-Employment Assessment Validity Guide: How to Validate a Skills Test, Evaluate Construct/Criterion/Content Validity & Vet a Vendor's Psychometric Claims"
+    },
+    {
+      "keep": 138,
+      "absorb": [
+        530
+      ],
+      "canonical_name": "Pre-Employment Assessment Validity Report: Score-to-Performance Correlations by Test Type & Role"
+    },
+    {
+      "keep": 116,
+      "absorb": [
+        286,
+        121,
+        281
+      ],
+      "canonical_name": "Assessment-to-Onboarding Toolkit: Using Skills Data to Accelerate Time-to-Productivity (Checklist + Benchmark Calculator)"
+    },
+    {
+      "keep": 358,
+      "absorb": [
+        284
+      ],
+      "canonical_name": "How Skills-Based Hiring Improves Retention: Assessment Accuracy vs. 12-Month Retention/Tenure Data"
+    },
+    {
+      "keep": 700,
+      "absorb": [
+        701,
+        297,
+        424
+      ],
+      "canonical_name": "Internal vs External Hiring Decision Guide: When to Assess Internally vs Externally + Promotion-Readiness Rubric"
+    },
+    {
+      "keep": 304,
+      "absorb": [
+        711,
+        712,
+        305
+      ],
+      "canonical_name": "Skills-Based Talent Management: How Assessment Data Drives Hiring, Development, Internal Mobility & Succession"
+    },
+    {
+      "keep": 561,
+      "absorb": [
+        26,
+        185
+      ],
+      "canonical_name": "Skills Assessment for Staffing & Recruitment Agencies: Screening at Volume Without Sacrificing Quality (+ In-House vs Agency Data)"
+    },
+    {
+      "keep": 24,
+      "absorb": [
+        317,
+        221,
+        630,
+        588,
+        707
+      ],
+      "canonical_name": "Hiring Analytics Playbook: Measuring Assessment Quality, Predictive Validity & Funnel Performance (with KPI Dashboard Templates)"
+    },
+    {
+      "keep": 685,
+      "absorb": [
+        335
+      ],
+      "canonical_name": "Hiring for Performance: Map Role Requirements to High-Validity Assessments + Build a Predictive Hire-Quality Model (Free Role-to-Test Planner)"
+    }
+  ],
+  "over_merges": [
+    {
+      "idea": 81,
+      "note": "'TA Screening Stack Builder' lumps a role-to-assessment stack-builder tool with a separate funnel-benchmark data report."
+    },
+    {
+      "idea": 143,
+      "note": "'Hiring Analytics Dashboard Kit' bundles a KPI dashboard template AND a standalone skills-test ROI calculator \u2014 two distinct builds."
+    }
+  ]
+}

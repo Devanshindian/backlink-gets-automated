@@ -1,0 +1,25 @@
+# --- Derived / regenerable artifacts (rebuild from workflows/00-foundation/scripts) ---
+**/content-index/
+**/_raw/
+**/rescrape-cache/
+
+# --- Large data files (regenerable; some exceed GitHub's 100MB limit) ---
+projects/testlify/content-database.csv
+**/competitor-formats-master.csv
+*.bak
+
+# --- GitHub Pages publish clone (its own git repo) ---
+**/_pages-repo/
+
+# --- Dependencies / build ---
+node_modules/
+**/__pycache__/
+*.pyc
+
+# --- Compiled binaries (keep the .swift source) ---
+workflows/00-foundation/scripts/reddit/ocr-mac
+
+# --- OS / editor ---
+.DS_Store
+**/.DS_Store
+*.log

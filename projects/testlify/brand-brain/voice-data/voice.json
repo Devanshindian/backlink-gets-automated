@@ -1,0 +1,266 @@
+{
+  "firstPerson": {
+    "frequency": 0.027257505548849346,
+    "examples": [
+      {
+        "phrase": "I have",
+        "count": 2
+      },
+      {
+        "phrase": "I am",
+        "count": 1
+      },
+      {
+        "phrase": "I was",
+        "count": 2
+      },
+      {
+        "phrase": "my",
+        "count": 9
+      }
+    ]
+  },
+  "secondPerson": {
+    "frequency": 1.0182625287177292,
+    "examples": [
+      {
+        "phrase": "you",
+        "count": 302
+      },
+      {
+        "phrase": "your",
+        "count": 221
+      }
+    ]
+  },
+  "passiveVoiceRatio": 0.3067484662576687,
+  "hedgingLanguage": {
+    "frequency": 0.31540827849382813,
+    "examples": [
+      {
+        "word": "might",
+        "count": 32
+      },
+      {
+        "word": "may",
+        "count": 76
+      },
+      {
+        "word": "could",
+        "count": 19
+      },
+      {
+        "word": "probably",
+        "count": 1
+      },
+      {
+        "word": "somewhat",
+        "count": 1
+      },
+      {
+        "word": "fairly",
+        "count": 7
+      },
+      {
+        "word": "rather",
+        "count": 20
+      },
+      {
+        "word": "quite",
+        "count": 3
+      },
+      {
+        "word": "relatively",
+        "count": 3
+      }
+    ]
+  },
+  "certaintyMarkers": [
+    {
+      "word": "clearly",
+      "count": 3
+    }
+  ],
+  "conversationalMarkers": [
+    {
+      "word": "look",
+      "count": 45
+    },
+    {
+      "word": "well",
+      "count": 35
+    },
+    {
+      "word": "honestly",
+      "count": 1
+    },
+    {
+      "word": "actually",
+      "count": 3
+    },
+    {
+      "word": "simply",
+      "count": 4
+    },
+    {
+      "word": "essentially",
+      "count": 1
+    }
+  ],
+  "aiCliches": [
+    {
+      "phrase": "dive into",
+      "count": 1
+    },
+    {
+      "phrase": "delve into",
+      "count": 2
+    },
+    {
+      "phrase": "delve",
+      "count": 4
+    },
+    {
+      "phrase": "unlock",
+      "count": 5
+    },
+    {
+      "phrase": "leverage",
+      "count": 11
+    },
+    {
+      "phrase": "leveraging",
+      "count": 5
+    },
+    {
+      "phrase": "elevate your",
+      "count": 2
+    },
+    {
+      "phrase": "seamless",
+      "count": 16
+    },
+    {
+      "phrase": "seamlessly",
+      "count": 8
+    },
+    {
+      "phrase": "robust",
+      "count": 11
+    },
+    {
+      "phrase": "rapidly evolving",
+      "count": 1
+    },
+    {
+      "phrase": "evolving landscape",
+      "count": 1
+    },
+    {
+      "phrase": "in today's",
+      "count": 1
+    },
+    {
+      "phrase": "harness",
+      "count": 3
+    },
+    {
+      "phrase": "harnessing",
+      "count": 1
+    },
+    {
+      "phrase": "harness the power",
+      "count": 2
+    },
+    {
+      "phrase": "unlock the potential",
+      "count": 2
+    },
+    {
+      "phrase": "unleash",
+      "count": 1
+    },
+    {
+      "phrase": "tap into",
+      "count": 2
+    },
+    {
+      "phrase": "take your .* to the next level",
+      "count": 1
+    },
+    {
+      "phrase": "utilize",
+      "count": 12
+    },
+    {
+      "phrase": "utilization",
+      "count": 3
+    },
+    {
+      "phrase": "empower",
+      "count": 10
+    },
+    {
+      "phrase": "synergy",
+      "count": 1
+    },
+    {
+      "phrase": "paradigm",
+      "count": 1
+    },
+    {
+      "phrase": "holistic",
+      "count": 3
+    },
+    {
+      "phrase": "streamline",
+      "count": 31
+    }
+  ],
+  "marketingSpeak": [],
+  "signatureHedging": [],
+  "collegialPatterns": [],
+  "equipmentSpecificity": {
+    "specific": [],
+    "generic": []
+  },
+  "identityMarkers": {
+    "genuineInterest": [],
+    "honestObsession": [],
+    "humbleHelper": [],
+    "transparencyCommitment": []
+  },
+  "openingPatterns": {
+    "personalContext": 0,
+    "observation": 0,
+    "question": 0,
+    "directProblem": 6
+  },
+  "hollowIntensifiers": [
+    {
+      "phrase": "honestly",
+      "count": 1,
+      "alternative": "just state the fact directly"
+    },
+    {
+      "phrase": "genuinely",
+      "count": 1,
+      "alternative": "remove - if it's genuine, it shows"
+    },
+    {
+      "phrase": "the real",
+      "count": 1,
+      "alternative": "drop 'real' - 'the issue' not 'the real issue'"
+    },
+    {
+      "phrase": "really",
+      "count": 1,
+      "alternative": "often removable - 'I enjoyed' not 'I really enjoyed'"
+    },
+    {
+      "phrase": "truly",
+      "count": 7,
+      "alternative": "remove - sounds like marketing copy"
+    }
+  ]
+}

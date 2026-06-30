@@ -1,0 +1,21 @@
+{
+  "commaDensity": 1.0378323108384457,
+  "dashTypes": {
+    "hyphen": 1307,
+    "enDash": 17,
+    "emDash": 7
+  },
+  "dashConsistency": {
+    "dominantType": "hyphen",
+    "consistencyScore": 98,
+    "mixedUsage": true,
+    "aiDetectionFlag": false,
+    "note": ""
+  },
+  "ellipsisFrequency": 0.019469646820606673,
+  "quotationStyle": "single",
+  "parentheticalFrequency": 4.770063471048635,
+  "exclamationFrequency": 0.2141661150266734,
+  "semicolonFrequency": 0.603559051438807,
+  "colonFrequency": 9.968459172150617
+}

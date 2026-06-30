@@ -1,0 +1,7 @@
+{
+  "rowid": "1767",
+  "url": "http://www.testdome.com/Programming-Tests/Cpp/34",
+  "status": "ok",
+  "method": "webfetch",
+  "text": "C++ Online Test - TestDome\n\nTestDome offers a C++ programming assessment designed to evaluate real-world coding skills. The platform features 'work-sample tasks' including algorithm implementation, memory management optimization, and object-oriented programming principles.\n\nFor Job Seekers: Candidates can practice and earn certificates by scoring in the top 25% on public questions.\n\nFor Companies: Organizations can screen candidates starting at '$7 per candidate,' with AI proctoring to detect human or AI assistance.\n\nSample Questions: The test includes problems across various difficulty levels:\n- Easy: 'Mega Store' (discount calculations), 'Game Platform' (character speed physics)\n- Hard: 'Boat Movements' (graph traversal), 'Pipeline' (higher-order functions)\n\nTopics covered include data structures, memory management, inheritance, recursion, and algorithmic thinking.\n\nThe test evaluates 'knowledge of programming in the C++ language and commonly used parts of the C++ Standard Library' through live coding challenges.\n\nTestDome is reportedly used by companies including Adobe, McAfee, and Turkish Airlines."
+}

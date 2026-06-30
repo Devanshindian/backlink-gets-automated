@@ -1,0 +1,7 @@
+{
+  "rowid": "2400",
+  "url": "https://www.wecreateproblems.com/2000-technology-skill-tests-by-wecp",
+  "status": "ok",
+  "method": "webfetch",
+  "text": "2000+ Technology Skill Tests by WeCP\n\nWeCP presents '2000+ Technology Skill Tests' as a comprehensive assessment platform for tech hiring. The article establishes that skill-focused hiring delivers measurable benefits: reducing turnover by 30-75%, cutting training time by 30-70%, and lowering hiring costs by nearly 70%.\n\nThe platform maps technology functions to job roles and competencies. For example, it describes assessing a Cloud Infrastructure Engineer candidate by creating a 'VM (Virtual Machine) based coding test' where the task involves fixing server crashes.\n\nWeCP categorizes tech assessments across seven function areas: Frontend/User Experience (using compiler-based and project-based evaluations); Content roles (MCQ, subjective, case studies); Management positions (case studies, diagramming); Backend Robustness (compiler-based, virtual machine coding); Marketing roles (work samples, case studies); Data and Algorithms (data science programming, visualizations); Security specialties (compiler-based coding).\n\nThe platform emphasizes identifying candidates who are 'not just knowledgeable in skill but also highly productive,' supported by clients including Deloitte, Infosys, Microsoft, and Bosch."
+}

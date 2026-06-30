@@ -1,0 +1,603 @@
+{
+  "formalVerbs": [
+    {
+      "word": "provide",
+      "count": 94,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "give",
+        "offer",
+        "supply"
+      ]
+    },
+    {
+      "word": "require",
+      "count": 64,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "need",
+        "must have",
+        "call for"
+      ]
+    },
+    {
+      "word": "maintain",
+      "count": 38,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "keep",
+        "hold",
+        "run"
+      ]
+    },
+    {
+      "word": "implement",
+      "count": 36,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "use",
+        "put in place",
+        "set up",
+        "install"
+      ]
+    },
+    {
+      "word": "perform",
+      "count": 33,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "do",
+        "run",
+        "carry out"
+      ]
+    },
+    {
+      "word": "select",
+      "count": 25,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "pick",
+        "choose"
+      ]
+    },
+    {
+      "word": "demonstrate",
+      "count": 19,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "show",
+        "prove",
+        "test"
+      ]
+    },
+    {
+      "word": "employ",
+      "count": 14,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "use",
+        "hire"
+      ]
+    },
+    {
+      "word": "achieve",
+      "count": 10,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "get",
+        "reach",
+        "hit",
+        "manage"
+      ]
+    },
+    {
+      "word": "utilize",
+      "count": 9,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "use"
+      ]
+    },
+    {
+      "word": "enable",
+      "count": 9,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "let",
+        "allow",
+        "make possible"
+      ]
+    },
+    {
+      "word": "indicate",
+      "count": 7,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "show",
+        "suggest",
+        "point to"
+      ]
+    },
+    {
+      "word": "obtain",
+      "count": 6,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "get",
+        "find",
+        "buy"
+      ]
+    },
+    {
+      "word": "establish",
+      "count": 6,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "set up",
+        "create",
+        "build",
+        "prove"
+      ]
+    },
+    {
+      "word": "facilitate",
+      "count": 4,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "help",
+        "make easier",
+        "enable"
+      ]
+    },
+    {
+      "word": "acquire",
+      "count": 3,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "get",
+        "buy",
+        "pick up",
+        "grab"
+      ]
+    },
+    {
+      "word": "determine",
+      "count": 3,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "find out",
+        "figure out",
+        "check",
+        "test"
+      ]
+    },
+    {
+      "word": "subsequent",
+      "count": 2,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "commence",
+      "count": 1,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "start",
+        "begin",
+        "kick off"
+      ]
+    },
+    {
+      "word": "conclude",
+      "count": 1,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "finish",
+        "end",
+        "wrap up",
+        "decide"
+      ]
+    },
+    {
+      "word": "proceed",
+      "count": 1,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "go ahead",
+        "continue",
+        "move on"
+      ]
+    },
+    {
+      "word": "sufficient",
+      "count": 1,
+      "category": "verb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    }
+  ],
+  "formalAdjectives": [
+    {
+      "word": "specific",
+      "count": 123,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "potential",
+      "count": 86,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "various",
+      "count": 40,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "different",
+        "several",
+        "a few"
+      ]
+    },
+    {
+      "word": "comprehensive",
+      "count": 32,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "complete",
+        "full",
+        "thorough"
+      ]
+    },
+    {
+      "word": "extensive",
+      "count": 32,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "large",
+        "wide",
+        "thorough"
+      ]
+    },
+    {
+      "word": "significant",
+      "count": 24,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "big",
+        "major",
+        "important"
+      ]
+    },
+    {
+      "word": "relevant",
+      "count": 20,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "related",
+        "connected",
+        "important"
+      ]
+    },
+    {
+      "word": "particular",
+      "count": 8,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "specific",
+        "certain",
+        "this"
+      ]
+    },
+    {
+      "word": "optimal",
+      "count": 7,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "best",
+        "ideal",
+        "perfect"
+      ]
+    },
+    {
+      "word": "appropriate",
+      "count": 5,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "right",
+        "suitable",
+        "proper"
+      ]
+    },
+    {
+      "word": "numerous",
+      "count": 4,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "many",
+        "lots of",
+        "plenty of"
+      ]
+    },
+    {
+      "word": "substantial",
+      "count": 1,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "big",
+        "large",
+        "considerable"
+      ]
+    },
+    {
+      "word": "sufficient",
+      "count": 1,
+      "category": "adjective",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    }
+  ],
+  "formalAdverbs": [
+    {
+      "word": "additionally",
+      "count": 17,
+      "category": "adverb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "accordingly",
+      "count": 5,
+      "category": "adverb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "furthermore",
+      "count": 4,
+      "category": "adverb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "moreover",
+      "count": 2,
+      "category": "adverb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "potentially",
+      "count": 2,
+      "category": "adverb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "alternatively",
+      "count": 1,
+      "category": "adverb",
+      "formality": "formal",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    }
+  ],
+  "aiSlop": [
+    {
+      "word": "dynamic",
+      "count": 31,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "optimize",
+      "count": 18,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "improve",
+        "fine-tune",
+        "tweak"
+      ]
+    },
+    {
+      "word": "strategic",
+      "count": 16,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "innovative",
+      "count": 14,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "robust",
+      "count": 11,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "strong",
+        "reliable",
+        "solid"
+      ]
+    },
+    {
+      "word": "leverage",
+      "count": 9,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "use",
+        "apply",
+        "take advantage of"
+      ]
+    },
+    {
+      "word": "seamless",
+      "count": 8,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "smooth",
+        "easy",
+        "works well"
+      ]
+    },
+    {
+      "word": "empower",
+      "count": 8,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "enable",
+        "allow",
+        "help"
+      ]
+    },
+    {
+      "word": "unlock",
+      "count": 5,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "discover",
+        "access",
+        "enable",
+        "reveal"
+      ]
+    },
+    {
+      "word": "delve",
+      "count": 4,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "explore",
+        "look at",
+        "examine",
+        "dig into"
+      ]
+    },
+    {
+      "word": "elevate",
+      "count": 3,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "improve",
+        "enhance",
+        "lift"
+      ]
+    },
+    {
+      "word": "transform",
+      "count": 2,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "change",
+        "improve",
+        "reshape"
+      ]
+    },
+    {
+      "word": "holistic",
+      "count": 2,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "synergy",
+      "count": 1,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    },
+    {
+      "word": "paradigm",
+      "count": 1,
+      "category": "verb",
+      "formality": "ai-slop",
+      "suggestedAlternatives": [
+        "[rewrite in simpler terms]"
+      ]
+    }
+  ],
+  "totalFormalWords": 800,
+  "formalityScore": 15,
+  "recommendations": [
+    "❌ CRITICAL: Found 15 AI slop words. These MUST be removed.",
+    "⚠️ MODERATE FORMALITY: 15 formal words per 1000. Consider simplifying.",
+    "Most used formal verbs: \"provide\" (94×), \"require\" (64×), \"maintain\" (38×)"
+  ]
+}

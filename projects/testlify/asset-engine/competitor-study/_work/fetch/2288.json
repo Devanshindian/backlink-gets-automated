@@ -1,0 +1,7 @@
+{
+  "rowid": "2288",
+  "url": "https://www.wecreateproblems.com/blog/how-many-programming-languages-are-there",
+  "status": "ok",
+  "method": "webfetch",
+  "text": "How Many Programming Languages Are There?\n\nAccording to the article, there are more than 8,000 programming languages, with The Historical Encyclopedia of Programming Languages listing 8,945 total. However, 'only a handful of them are used today in commercial development.'\n\nMajor Categories: The article organizes languages into 18 distinct categories: General-Purpose (Python, Java, C++, JavaScript, Go, Rust); Specialized (MATLAB, SQL, Fortran, VHDL, Prolog); Esoteric (Brainfuck, LOLCODE, Piet); Obsolescent (COBOL, ALGOL, Pascal, BASIC); Scripting (Python, Ruby, PHP, Bash, Perl); Functional (Haskell, Lisp, Erlang, Clojure); Object-Oriented (Java, C#, Swift, Ruby); Concurrent/Parallel (Go, Rust, Erlang, Scala); Hardware Description (VHDL, Verilog, SystemVerilog); plus markup, low-level, declarative, domain-specific, and visual categories.\n\nCurrent Titans: The article identifies Python, JavaScript, Java, and Rust as dominant languages shaping modern development.\n\nHiring Insight: The article emphasizes that 'success in programming isn't about mastering every language - it's about understanding the concepts underlying them' and recommends hiring for problem-solving ability and adaptability."
+}

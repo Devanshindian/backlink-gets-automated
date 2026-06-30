@@ -1,0 +1,19 @@
+{
+  "name": "vendored-voice-analyser",
+  "private": true,
+  "type": "module",
+  "description": "Trimmed, vendored copy of houtini-ai/voice-analyser-mcp: just the 6 analyzers + the page extractor + the corpus runner. No MCP server. See README.md.",
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "compromise": "^14.14.0",
+    "turndown": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.0",
+    "@types/turndown": "^5.0.5",
+    "typescript": "^5.5.0"
+  }
+}
