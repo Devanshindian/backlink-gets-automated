@@ -66,8 +66,11 @@ The reuse check stores **links only** — page text is fetched on demand (looked
 
 ## Note on excluded files
 
-Large, derived, or regenerable artifacts are **git-ignored** (see `.gitignore`) to keep the repo lean:
-- the embeddings index (`content-index/`), raw scrape dumps (`_raw/`), and `content-database.csv` (>100 MB) — all regenerable from the scripts in `workflows/00-foundation/scripts/`;
+The full content database is included **gzipped**: `projects/testlify/content-database.csv.gz` (~23 MB) — the
+raw `.csv` is 103 MB, over GitHub's 100 MB hard limit, so `gunzip` it to use (`gunzip -k content-database.csv.gz`).
+
+Other large/derived/regenerable artifacts are **git-ignored** (see `.gitignore`) to keep the repo lean:
+- the embeddings index (`content-index/`) and raw scrape dumps (`_raw/`) — regenerable from the scripts in `workflows/00-foundation/scripts/`;
 - `node_modules/`, backups (`*.bak`), OS files, and the GitHub-Pages publish clone (`_pages-repo/`).
 
 Credentials are **never** in this repo — they live in a `chmod 600` file outside the project tree.
