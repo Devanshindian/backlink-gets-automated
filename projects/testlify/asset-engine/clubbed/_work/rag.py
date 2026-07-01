@@ -20,7 +20,15 @@ EMB_MODEL = "voyage-4-large"     # best general embedding model on the free tier
 RERANK_MODEL = "rerank-2.5"      # best reranker on the free tier
 ALPHA = 0.5            # title weight in blended score (1-ALPHA = body); tunable
 N_RETRIEVE = 40        # dense candidates before reranking (>= TOPK)
-TOPK = 15              # RAG candidate LINKS kept per idea (links only — no content stored)
+TOPK = 15              # RAG candidate LINKS kept per idea — JOB A (precision, for the LLM judge)
+RECALL_N = 50          # JOB B (recall, human catalogue): dense top-N shown, NO rerank truncation.
+                       # 2026-07 recall study (DE-BIASED labels, ~25 relevant/asset): relevant
+                       # pages sit at dense ranks 15-75; the rerank top-15 cut loses them.
+                       # dense recall@K: @15≈0.34 @25≈0.47 @40≈0.59 @50≈0.66 @75≈0.79.
+                       # Lever is K — bump RECALL_N to ~75 for ~0.79 recall (more reviewer scan).
+                       # Decomposition / keyword-net / query-rewrite all tested → no worthwhile
+                       # gain over widening K. This semantic recall list REPLACES the literal
+                       # keyword catalogue (which missed synonyms and added only a small tail).
 CHUNK_CHARS = 4800
 OVERLAP = 600
 MAX_ITEMS = 64
@@ -75,6 +83,13 @@ def rerank(query, docs, top_k):
               {"query": query, "documents": docs, "model": RERANK_MODEL,
                "top_k": top_k, "return_documents": False})
     return [(r["index"], r["relevance_score"]) for r in d["data"]]
+
+LOCALES = {"ar","pl","it","pt-br","no","ja","da","es","de","el","sv","nl","fr",
+           "pt","zh","ko","ru","tr","hi","id","th","vi"}
+def foreign(u):
+    # translation duplicates: URL's first path segment is an ISO locale code
+    m = re.match(r"https?://(?:www\.)?[^/]+/([^/]+)/", u or "")
+    return bool(m and m.group(1).lower() in LOCALES)
 
 def chunks(text):
     text = (text or "").strip()
@@ -202,15 +217,25 @@ def do_retrieve(clubbed_csv, idx_dir, content_csv):
         bestbody = np.full(len(urls), -1.0, dtype=np.float32)
         np.maximum.at(bestbody, body_uidx, bsim)        # best chunk per page
         blended = ALPHA * tsim + (1 - ALPHA) * bestbody
-        cand = [urls[k] for k in np.argsort(blended)[::-1][:N_RETRIEVE]]
-        # rerank the dense top-N with the cross-encoder
-        docs = [((tmap[u][:200] + "\n" + cmap[u])[:RERANK_DOC_CHARS]) for u in cand]
+        dense_order = [urls[k] for k in np.argsort(blended)[::-1] if not foreign(urls[k])]
+
+        # ── JOB A — precision (for the LLM judge): rerank dense top-N, keep TOPK ──
+        cand = dense_order[:N_RETRIEVE]
+        docs = [((tmap[u][:200] + "\n" + cmap[u])[:RERANK_DOC_CHARS]).replace("\x00", " ").strip() or "(no content)"
+                for u in cand]
         order = rerank(queries[n] or r.get("Asset", ""), docs, min(TOPK, len(cand)))
         top = [(cand[i], sc) for i, sc in order]
-        # LINKS ONLY — we store the candidate links, not their content. Any step that needs the
-        # page text (Stage-3 judge, content creation) fetches it on demand: look it up by URL in
-        # content-database.csv (already holds Full content) or web-fetch the live page.
+
+        # ── JOB B — recall (human catalogue): dense top-RECALL_N, NO rerank cut ──
+        # (2026-07 de-biased study: widening K 15→50 lifts recall ~0.34→0.66 (~0.79 @75);
+        #  rerank truncation to 15 is what loses the on-topic siblings. Replaces keyword catalogue.)
+        recall = dense_order[:RECALL_N]
+
+        # LINKS ONLY — store links, not content. Any step needing page text fetches on
+        # demand from content-database.csv (holds Full content) or the live page.
         r["RAG candidates"] = "; ".join(f"{tmap[u]} — {u} ({sc:.2f})" for u, sc in top)
+        r["Topic pages we own"] = "; ".join(f"{tmap[u]} — {u}" for u in recall)
+        r["Reference links"] = "; ".join(dict.fromkeys([u for u, _ in top] + recall))
         if (n + 1) % 50 == 0:
             print(f"   retrieved {n+1}/{len(rows)}", file=sys.stderr)
 

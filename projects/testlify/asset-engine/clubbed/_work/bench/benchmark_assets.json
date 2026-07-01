@@ -1,0 +1,352 @@
+[
+  {
+    "idx": 13,
+    "asset": "Hiring Metrics Master Guide: 20+ KPIs with Benchmarks, Formulas & Assessment-Quality Tracking (Interactive Calculator)",
+    "angle": "same \"essential guide to people analytics\" format applied to the hiring/assessment layer; covers the four analytics types through a hiring lens (descriptive: completion rates; diagnostic: why drop-offs happen; predictive: test scores vs. 90-day performance; prescriptive: which test predicts best for which role) — entirely absent from the AIHR page",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 24,
+    "asset": "Time-to-Hire: Definition, Benchmarks, Formula & How Assessments Reduce It (with Industry Data)",
+    "angle": "Adds the missing lever this page never touches — how skills-based screening compresses time-to-hire by eliminating unqualified candidates before interviews rather than discovering gaps at the final stage — with Testlify benchmark data on assessment-stage time savings, making it the only time-to-hire guide that connects the metric to the assessment step that most directly controls it.",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 28,
+    "asset": "Pre-Employment Test-Type & Role Selector Guide: Which Assessment Is Right for Your Role",
+    "angle": "Transplants the \"when role-specific tests beat generic coding tests\" framing to Testlify's assessment context with a decision guide and free sample questions — the \"when to use this test\" reasoning and sample access this WordPress page never provides.",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 29,
+    "asset": "Management & Leadership Skills Assessment Kit: Sample Questions + Scorecard for Hiring Leaders",
+    "angle": "fills the executive-assessment gap this AI-for-executive-search guide skips: what cognitive, personality, and leadership assessment approaches have validity evidence for senior roles (vs volume hiring), with a senior-role structured interview scorecard and red-flag indicators — the assessment rigor layer this AI efficiency guide does not touch",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 30,
+    "asset": "Cognitive Aptitude Tests in Hiring: Validity Evidence, Score Cutoffs, Sample Questions & Role-Fit Selection Guide",
+    "angle": "eSkill's cognitive aptitude page lists 6 dimensions with one-line definitions and zero free access. Our buyer's guide explains each subtype with 2 sample questions, cites the predictive validity coefficient for each at entry, mid, and senior job levels from published meta-analyses, and adds a build-vs-buy checklist for HR teams evaluating cognitive testing vendors — turning a vendor category list into an independent reference.",
+    "format": "Other / editorial",
+    "source": "Competitor"
+  },
+  {
+    "idx": 35,
+    "asset": "NYC Local Law 144 / Ethical AI Hiring Compliance Guide: Reading a Bias Audit + State-by-State Vendor Checklist",
+    "angle": "Turns a compliance badge into a practical resource: a step-by-step LL 144 compliance checklist for TA teams (what they must do, not just what the vendor does), an explanation of how to read and compare bias audit results across vendors, and an assessment-tool selection checklist for NYC-based employers – the employer-facing guidance this vendor-focused page entirely omits.",
+    "format": "Other / editorial",
+    "source": "Competitor"
+  },
+  {
+    "idx": 78,
+    "asset": "AI in Recruitment 2026: Benchmark Study on Adoption, Time-to-Hire Gains & Bias Outcomes",
+    "angle": "Replaces secondary-stat overviews with primary assessment-platform data — showing actual screening accuracy, bias outcomes by demographic group, and completion rates — including the failure modes and trade-offs this positive-summary article omits.",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 100,
+    "asset": "AI in Hiring, Disentangled: Assessment AI vs. Resume-Screening vs. HR-Ops AI",
+    "angle": "Separates the 'AI in HR' topic into its two fundamentally different use cases — pre-hire assessment/interview AI (Testlify's lane) vs. post-hire engagement/performance AI — publishing separate accuracy and bias benchmarks for each, rather than bundling them as WeCP's page does.",
+    "format": "Data report / research",
+    "source": "Competitor"
+  },
+  {
+    "idx": 102,
+    "asset": "Hiring Compliance Checklist: EEOC, UGESP, Adverse Impact & Pre-Employment Assessment Legal/Privacy Requirements",
+    "angle": "Criteria's page asserts legal defensibility but gives employers no tools to achieve it themselves. Our asset translates UGESP requirements into a step-by-step employer checklist, explains the 4/5ths rule with a worked example, includes a free adverse impact calculation spreadsheet, and provides a documentation template for recording selection criteria — giving legal/HR teams a working toolkit where this page offers reassurance.",
+    "format": "Other / editorial",
+    "source": "Competitor"
+  },
+  {
+    "idx": 103,
+    "asset": "Free C++ Developer Skills Test",
+    "angle": "Shows 3 sample questions including a real coding stub and a published junior-hire benchmark — Mettl's page hides all samples and provides no benchmark to guide hiring decisions",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 121,
+    "asset": "Free Quantitative Aptitude Test",
+    "angle": "Fully self-serve (not 'make a request') with 4 public sample problems and published benchmark scores by job family — Mettl's test is gated behind a demo request with no public samples and no job-family benchmarks",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 126,
+    "asset": "Free Culture Add / Culture-Fit Assessment",
+    "angle": "Shows a sample result report, full list of survey value/behavior options, and a setup walkthrough — three concrete things this page describes abstractly but never shows pre-signup.",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 153,
+    "asset": "Adaptive vs. Fixed-Form Assessment Comparison: When to Use Each (+ What the Score Report Tells You)",
+    "angle": "same \"adaptive assessment\" explainer format but fills the three gaps: a side-by-side comparison table of adaptive vs. fixed-form for different hiring contexts, a worked example showing difficulty-progression in a live screen, and guidance on interpreting percentile scores from each format; this page explains the concept but leaves readers with no decision framework",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 154,
+    "asset": "Free SEO Copywriting Skills Test",
+    "angle": "Shows 5 real sample questions before any sign-up and issues a free shareable certificate — both things this page withholds entirely",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 169,
+    "asset": "WordPress Developer Skills Assessment Guide",
+    "angle": "Delivers a standalone proficiency rubric and free sample questions across the three WordPress levels that hiring managers can use before choosing any platform — versus this guide, which is a product tour requiring signup to see any questions.",
+    "format": "Guide / pillar",
+    "source": "Competitor"
+  },
+  {
+    "idx": 177,
+    "asset": "Free Project Management Aptitude Test",
+    "angle": "Adds an Agile/Scrum-specific public sample scenario and a project delivery success benchmark — both absent from TestDome's generic-aptitude test page.",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 178,
+    "asset": "Innate vs Acquired Skills in Hiring: Which to Test for Which Roles (+ Assessment Selector)",
+    "angle": "Converts the theory into a role-by-role decision table showing which attributes to assess via psychometric test (innate) vs. skills test (acquired), with a free interactive assessment selector — the actionable layer this page entirely lacks.",
+    "format": "Rankings / best-tools / comparison",
+    "source": "Competitor"
+  },
+  {
+    "idx": 180,
+    "asset": "Free Abstract Reasoning Test",
+    "angle": "Adds a role-suitability guide ('which scores matter for software engineers vs consultants vs PMs') alongside the public sample Qs — the practical hiring context absent from TestDome's test-page-only format.",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 187,
+    "asset": "Free Call Center Candidate Assessment Guide",
+    "angle": "Adds sample test items for each skill cluster and published industry pass-rate benchmarks — both absent from Mettl's prose-only, undated list.",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 192,
+    "asset": "Free Skills Assessment Certificates: What They Signal, How to Earn One, and Sample Questions per Test",
+    "angle": "Bakes in the employer-side signal explanation (what hiring teams actually see and use) and 5 live sample questions per test that this page withholds behind the 'browse tests' redirect — turning a process description into a decision page for candidates.",
+    "format": "Other / editorial",
+    "source": "Competitor"
+  },
+  {
+    "idx": 204,
+    "asset": "Personality Assessment in Hiring: Using Validated Instruments Without Adverse Impact",
+    "angle": "converts TestGorilla's personality-bias awareness piece into an actionable assessment guide: validated instrument recommendations, structured questions per role type, and an adverse impact checklist for personality testing — the practical toolkit this concept piece calls for but never supplies.",
+    "format": "Rankings / best-tools / comparison",
+    "source": "Competitor"
+  },
+  {
+    "idx": 222,
+    "asset": "React Native Developer Interview Guide (iOS, Android, Cross-Platform)",
+    "angle": "Adds sample answers for each level and a specific pre-screen blueprint broken by platform track — the page lists questions only and its test recommendation is a CTA, not actionable guidance.",
+    "format": "Interview-questions listicle",
+    "source": "Competitor"
+  },
+  {
+    "idx": 233,
+    "asset": "Free Numerical Reasoning Test for Hiring: Sample Questions by Difficulty + Role Benchmarks",
+    "angle": "provides 20 free publicly visible numerical reasoning questions (basic/intermediate/advanced), pass-rate benchmarks by role category, and a difficulty-calibration guide for hiring teams — all three things this explainer describes but withholds behind a demo CTA",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 236,
+    "asset": "Free SAP SD Consultant/Analyst Assessment",
+    "angle": "Splits into consultant-level (configuration, GAP analysis) and analyst-level (order-to-cash, reporting) tracks with separate sample Qs — iMocha offers one undifferentiated test with no public samples",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 260,
+    "asset": "Free Embedded C Skills Test (RTOS vs Bare-Metal)",
+    "angle": "Splits RTOS from bare-metal contexts absent from this generic page, shows a coding stub sample before signup, and issues a free cert",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 308,
+    "asset": "Pre-Employment Assessment Certifications & Standards 2026: EEOC, Validity & Adoption Compared",
+    "angle": "Transplants the ranked-list-with-stats format to the hiring-assessment standards space — comparing frameworks (EEOC guidelines, SHL, BPS, SHRM TA certification) by actual validity evidence type, compliance requirements, and employer adoption rates. Fills the gap this certification list leaves by having no independent comparison metrics.",
+    "format": "Rankings / best-tools / comparison",
+    "source": "Competitor"
+  },
+  {
+    "idx": 311,
+    "asset": "Bad Hire Cost Calculator: Estimate Your True Cost by Role, Seniority & Industry + Assessment ROI Offset",
+    "angle": "Transplants the 'turnover rate: definition, formula, costs' format but adds the missing upstream link — what fraction of costly turnover is caused by bad hires and how pre-employment testing changes that ratio — replacing 2018 benchmarks with current data and connecting the metric to the assessment stage this turnover guide never reaches.",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 324,
+    "asset": "Skills-Test Candidate Rejection Email Templates: Stage-by-Stage Scripts + Assessment Feedback for Every Outcome",
+    "angle": "Builds the one rejection scenario both this page and RowID 1416 miss entirely — test-based decline with objective skills feedback — covering early screen (test not completed), score-below-threshold, and late-stage assessment pass but role-fit fail, turning data-driven rejections into a positive, skills-growth framing.",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 337,
+    "asset": "Free Entry-Level Hiring Skills Screener (grammar+reasoning+math)",
+    "angle": "Transplants the \"short simulation + public validity data + cut-score transparency\" format onto Testlify's role-readiness assessments — giving hiring managers public sample tasks and cut-score justifications this page withholds.",
+    "format": "Free test / assessment",
+    "source": "Competitor"
+  },
+  {
+    "idx": 341,
+    "asset": "Skills Gap at Hire vs. Post-Hire Upskilling Report",
+    "angle": "Transplants the upskilling-stats format into the pre-hire assessment lane — using Testlify data to show how a candidate's assessment score profile (skills gap map at hire) predicts how fast they close those gaps post-hire, the causal link TestGorilla's upskilling page wants to make but cannot evidence.",
+    "format": "Data report / research",
+    "source": "Competitor"
+  },
+  {
+    "idx": 356,
+    "asset": "Global Skills Assessment Adoption Index: Which Countries and Industries Adopt Pre-Employment Testing Fastest",
+    "angle": "Transplants the country-breakdown data-study format into Testlify's world — replacing 7-year-old SaaS purchase conversion data with current assessment adoption rates by country and industry, directly fixing the staleness and topic mismatch of the original.",
+    "format": "Other / editorial",
+    "source": "Competitor"
+  },
+  {
+    "idx": 384,
+    "asset": "Pre-Employment Assessment: The Complete Guide to Test Types, Validity, Bias & Candidate Experience",
+    "angle": "eSkill's hub page lists 4 assessment categories with no guidance on combining them. Our asset presents 5 research-backed test battery combinations (e.g. cognitive + integrity for high-volume entry-level; cognitive + technical skills for engineering roles), cites the incremental validity of adding each layer, and includes a one-page quick-start guide for each combination — a decision tool this page cannot offer from category labels alone.",
+    "format": "Answer-bait (what-is / how-it-works)",
+    "source": "Competitor"
+  },
+  {
+    "idx": 393,
+    "asset": "Skills-Based Talent Management: How Assessment Data Drives Hiring, Development, Internal Mobility & Succession",
+    "angle": "Keeps the numbered best-practices format but reorients each practice around the assessment decision — what to test at hire, how assessment data feeds succession and internal mobility decisions. Replaces the 3-bullet treatment of assessment with a full evidence-backed implementation guide.",
+    "format": "Guide / pillar",
+    "source": "Competitor"
+  },
+  {
+    "idx": 427,
+    "asset": "Assessment Centre vs. Online Skills Test: When Each Fits, with Cost-Validity Comparison",
+    "angle": "Fills the gap this guide ignores: a direct cost and validity comparison between traditional assessment centres and online skills tests, with a practical SMB alternative pathway — neither appears anywhere in the original.",
+    "format": "Guide / pillar",
+    "source": "Competitor"
+  },
+  {
+    "idx": 434,
+    "asset": "Startup Hiring Playbook: Screening 100+ Applicants with a Tiny Team Using Skills Tests",
+    "angle": "Addresses the startup-specific constraint this guide ignores — small-team, high-volume screening — with a concrete assessment setup guide and time estimates for each stage, rather than general best practices that assume a full HR function.",
+    "format": "Guide / pillar",
+    "source": "Competitor"
+  },
+  {
+    "idx": 435,
+    "asset": "Skills Assessment vs Competency Mapping Tools: Which to Use for Hiring vs Workforce Planning",
+    "angle": "Addresses the buyer confusion this list creates (assessment tools vs. competency mapping tools are not the same): a decision guide with a use-case table showing which tool type serves pre-hire screening vs. post-hire development — turning the generic tool list into a buying decision guide.",
+    "format": "Rankings / best-tools / comparison",
+    "source": "Competitor"
+  },
+  {
+    "idx": 445,
+    "asset": "The AI Interview Cheating Report: How Often Candidates Read AI Answers Live — and Whether Anyone Can Tell",
+    "angle": "An annual data report quantifying how widespread live AI assistance is in remote interviews, by role and seniority, with the tells interviewers report and the detection gap.",
+    "format": "",
+    "source": "Reddit"
+  },
+  {
+    "idx": 446,
+    "asset": "Death of the Resume Filter: What Share of Applications Are Now AI-Generated — and What Still Signals a Real Candidate",
+    "angle": "A data study measuring the rise of AI-generated applications and the breakdown of resume screening, with what actually still differentiates a genuine candidate.",
+    "format": "",
+    "source": "Reddit"
+  },
+  {
+    "idx": 447,
+    "asset": "The Degree Doesn't Predict the Hire: Performance Data on Capability-Screened vs Degree-Required Roles",
+    "angle": "A benchmark report comparing on-the-job outcomes of degree-gated vs capability-screened hiring, plus how many open roles still demand a degree they don't need.",
+    "format": "",
+    "source": "Reddit"
+  },
+  {
+    "idx": 448,
+    "asset": "Culture Fit or Cover Story? How Often 'Soft-Skill' Rejections Are Really Bias — and What Actually Predicts On-the-Job Fit",
+    "angle": "A research piece on how unmeasured 'culture fit' drives both biased rejections and failed hires, and what objective signals actually predict the human side of performance.",
+    "format": "",
+    "source": "Reddit"
+  },
+  {
+    "idx": 449,
+    "asset": "Does LeetCode Predict the Engineer? A Data Study of Algorithm-Trivia Screens vs Real Performance",
+    "angle": "A data study testing whether algorithm-puzzle screen performance correlates with actual engineering output, and what a job-relevant technical evaluation looks like instead.",
+    "format": "",
+    "source": "Reddit"
+  },
+  {
+    "idx": 450,
+    "asset": "The Proxy Candidate Problem: How Fake and Stolen-Identity Applicants Pass Remote Screening",
+    "angle": "An investigative data report on how proxy/fake candidates clear remote screening and background checks, with an index of the warning signs and where verification breaks.",
+    "format": "",
+    "source": "Reddit"
+  },
+  {
+    "idx": 453,
+    "asset": "Skills-Based Hiring Statistics (sourced, updated yearly)",
+    "angle": "Curated, every stat sourced, plus one original Testlify platform stat per section that no roundup can match.",
+    "format": "Statistics roundup",
+    "source": "Other-niche"
+  },
+  {
+    "idx": 455,
+    "asset": "The Structured Interview Checklist (interactive + downloadable)",
+    "angle": "Interactive checklist plus a scorecard download, built from our structured-interview product and scorecard templates.",
+    "format": "Checklist",
+    "source": "Other-niche"
+  },
+  {
+    "idx": 457,
+    "asset": "Free Practice Tests + Public Sample Question Bank",
+    "angle": "High-volume free practice tests with public sample questions per role, generated from our 3,500+ test library; competitor test pages paywall the questions.",
+    "format": "Free practice test / question bank",
+    "source": "Other-niche"
+  },
+  {
+    "idx": 459,
+    "asset": "The Complete List of Skills to Test, by Role (500+)",
+    "angle": "Exhaustive role -> skills -> test mapping, a byproduct of our 3,500+ tests across 4,500+ roles; each skill links to an actual test. Nobody owns the canonical list.",
+    "format": "Complete-list listicle",
+    "source": "Other-niche"
+  },
+  {
+    "idx": 465,
+    "asset": "What's Your Hiring-Bias Profile? (quiz + shareable result)",
+    "angle": "A B2B-appropriate quiz naming a recruiter's dominant biases + how to counter each, backed by our bias/fairness framework; shareable result page. No B2B hiring quiz exists in-niche.",
+    "format": "Quiz / typology",
+    "source": "Other-niche"
+  },
+  {
+    "idx": 467,
+    "asset": "We Analyzed [N] Assessments: What Actually Predicts a Good Hire",
+    "angle": "A large-scale look from real assessment outcomes; competitors' data reports are opinion surveys, not platform data. Original research is the most-cited format.",
+    "format": "Original research",
+    "source": "Other-niche"
+  },
+  {
+    "idx": 469,
+    "asset": "The Skills-Gap Index (which skills each industry is short on, annual)",
+    "angle": "A named, recurring index ranking skill shortages by industry/role from our aggregate test pass-rate data; journalists cite indices by name. No assessment vendor publishes one.",
+    "format": "Branded index",
+    "source": "Other-niche"
+  },
+  {
+    "idx": 470,
+    "asset": "Most In-Demand Skills, Ranked (quarterly)",
+    "angle": "Quarterly ranking of skills by test demand/growth from our platform data; a recurring citation hook that updates each cycle.",
+    "format": "Rankings",
+    "source": "Other-niche"
+  }
+]

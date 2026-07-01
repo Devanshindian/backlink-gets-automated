@@ -29,8 +29,8 @@ empty. The reuse check fills them — each produced by exactly one stage, so the
 
 | Column | What it holds | Produced by |
 |---|---|---|
-| **RAG candidates** | the top-15 best existing pages (blended retrieve → reranked), each as `Title — link (rerank score)` | Stage 2 — retrieval |
-| **Topic pages we own** | the **complete** list of existing pages on the asset's topic (deterministic keyword catalogue) | Stage 2 — catalogue |
+| **RAG candidates** | **JOB A (precision)** — top-15 best existing pages (blended retrieve → reranked), each as `Title — link (rerank score)` | Stage 2 — precision path |
+| **Topic pages we own** | **JOB B (recall)** — the **semantic recall list**: dense blended **top-50** on the asset's topic (no rerank cut), each as `Title — link` | Stage 2 — recall path |
 | **Reference links** | one consolidated, de-duped list of every link above — the set to fetch when building the asset | Stage 2 — assembly |
 | **Reuse verdict** | one of: 🟢 Already have it · 🟡 Improve existing · 🟠 Build from parts · 🔴 Brand new | Stage 3 — LLM |
 | **Chosen links** | the verdict's actual link(s) — **a subset of RAG candidates**; blank for Brand new | Stage 3 — LLM |
@@ -94,18 +94,25 @@ For each asset idea in `clubbed-ideas`:
 2. Embed the query with the same Voyage model.
 3. **Blended dense score per page:** `score = α·(query↔title) + (1−α)·(best query↔body chunk)`, with **α = 0.5**
    (title slightly favored; tunable). Take the **top 40** pages by this blended score.
-4. **Rerank** those 40 with **Voyage `rerank-2.5`** — a cross-encoder that reads the query + each page and
-   scores true relevance far better than cosine — and keep the **top 15** (exclude foreign-language pages).
-5. **Build the topic catalogue** (separate, deterministic — see the "Topic catalogue" section): every existing
-   English page whose title/URL contains the asset's topic keyword(s).
+4. **JOB A — precision (RAG candidates).** **Rerank** those 40 with **Voyage `rerank-2.5`** — a cross-encoder
+   that reads the query + each page and scores true relevance far better than cosine — and keep the **top 15**
+   (foreign-language pages already excluded). This is the precise short-list the LLM judge reads.
+5. **JOB B — recall (Topic pages we own).** Take the dense blended **top-50** (NO rerank, NO truncation to 15),
+   foreign excluded. This is the human completeness view — see "Recall path". The reranker is deliberately
+   NOT applied here: it optimises precision-to-the-asset's-angle and so *demotes* on-topic/off-angle siblings,
+   which is exactly what the recall job must keep.
 6. Write into `clubbed-ideas.csv`, one pass — **links only, no page content**:
-   - **RAG candidates** = the top-15 as `Title — link (rerank score)`;
-   - **Topic pages we own** = the catalogue as `Title — link`;
+   - **RAG candidates** = the top-15 (job A) as `Title — link (rerank score)`;
+   - **Topic pages we own** = the top-50 (job B) as `Title — link`;
    - **Reference links** = the de-duped union of the two (plain URLs) — the fetch list for content creation.
 
-> **Why 40 → 15?** Dense retrieval is approximate, so cast a wide net (**40**) for recall, then let the reranker
-> keep the genuinely relevant **15** (was 7 — widened so the reviewer sees more of the neighbourhood). 40, 15,
-> and α are all tunable. **No page content is stored** — only links (see "Links, not content" above).
+> **Why two separate paths?** The two consumers conflict. The **LLM judge** wants the *most precise* few
+> (job A) — a cross-encoder rerank is ideal. The **human catalogue** wants *all* on-topic pages (job B) —
+> and the rerank structurally caps that (it demotes off-angle siblings). The 2026-07 recall study proved
+> the relevant pages aren't missing — they sit at dense ranks 15-75, and the rerank top-15 cut loses them.
+> So serve the two jobs with two lists from one dense pass: rerank-top-15 for A, dense-top-50 for B. On
+> de-biased labels (~25 relevant/asset) dense recall climbs **@15≈0.34 → @50≈0.66 → @75≈0.79** — bump
+> `RECALL_N` toward 75 if completeness beats catalogue length. **No page content is stored** — only links.
 
 ### End of Stage 2 — what `clubbed-ideas.csv` now holds (17 columns, links only)
 
@@ -237,8 +244,8 @@ The runner writes the three returned fields straight into the idea's `Reuse verd
 
 | `clubbed-ideas.csv` column | Filled from |
 |---|---|
-| RAG candidates | Stage 2 — top-15 links + titles + scores |
-| Topic pages we own | Stage 2 — deterministic keyword catalogue (all topic pages) |
+| RAG candidates | Stage 2 — job A: rerank top-15 links + titles + scores |
+| Topic pages we own | Stage 2 — job B: semantic recall list (dense top-50) |
 | Reference links | Stage 2 — de-duped union of the two link sets |
 | Reuse verdict | Stage 3 — the decision tree (reads candidate text fetched on demand) |
 | Chosen links | Stage 3 — subset of RAG candidates |
@@ -284,10 +291,18 @@ The **baseline above (full asset-title query → blended dense top-30 → rerank
 | **LLM-crafted short query** (LLM rewrites the title to a clean topic) | ❌ worse | Full title beat it **recall@15 0.644 vs 0.530, precision 0.81 vs 0.69, head-to-head 28–6**. Shortening drops signal — the title's qualifiers/angle help the embedder+reranker. |
 | **BM25 + RRF hybrid** (add lexical search, fuse rankings) | ❌ no gain | No measurable improvement on the cases; added moving parts. |
 | **MMR diversity re-rank** | ❌ no gain | Re-introduced off-topic pages (an HRM page into psychometric) without lifting recall. |
+| **Query decomposition** (LLM splits the asset into sub-angle queries, union the retrievals) | ❌ no gain | The union ties or *loses* to the baseline's own dense top-40 (which already holds ~75% of relevant). Sub-angle expansion adds nothing the wider dense window doesn't, and a bad sub-query pollutes the top slots. Tested 2026-07. |
 
-> **The one real, still-open gap:** judges marked ~19 relevant pages/asset on average; the baseline surfaces
-> ~64% of them at top-15 (recall@15 ≈ 0.64). Since query changes are a proven dead-end, the *only* lever worth
-> testing for recall is **showing more results** (top-20/25) — and only if A/B'd on the same 49-asset harness.
+> **RESOLVED — the recall gap was a selection-budget gap, not a retrieval gap (2026-07 study).**
+> Judges mark ~25 relevant pages/asset (de-biased); they are NOT missing — they sit at **dense ranks 15-75**
+> and the rerank top-15 cut throws them away. **De-biased** dense recall@K: **@15 ≈ 0.34 · @25 ≈ 0.47 ·
+> @40 ≈ 0.59 · @50 ≈ 0.66 · @75 ≈ 0.79.** (An earlier dense-seeded label set read ~0.15 higher — inflated,
+> because the labels were pooled from the dense retriever itself; we de-biased by adding an independent
+> decomposition-sourced candidate pool and re-labeling.) The fix is the **two-path** split above: keep
+> rerank-top-15 for the judge (job A), show **dense top-50** for the human catalogue (job B). The old
+> deterministic keyword catalogue was retired — it missed synonyms and added little the dense list doesn't;
+> the semantic dense top-N covers the same ground in one retrieval pass with no extra model. Decomposition,
+> query-rewrite, BM25-hybrid, MMR, and best-chunk were all measured and add nothing over widening K — do not re-try.
 
 > **Foreign-language pages:** exclude translation duplicates (URLs whose first path segment is an ISO language
 > code — `/de/`, `/fr/`, `/ja/`, … — confirmed by a matching English-slug twin). They waste result slots. This
@@ -323,17 +338,26 @@ renders cleanly. So the finished pool is **always delivered for review in two fo
 
 ---
 
-## Topic catalogue — the complete-list companion to the RAG match
+## Recall path — the complete-list companion to the RAG match (`Topic pages we own`)
 
-The RAG match (Stage 2–3) answers *"is THIS exact asset already covered?"* — it's a **precision** tool that ranks the best few matches, so it deliberately leaves out same-topic pages that don't fit the asset's specific angle. Reviewers also want the opposite: *"show me EVERY page we already own on this topic."* That's a **recall/completeness** need, and no reranker can guarantee it (proven — see the rejected-experiments table). So ship a second, **deterministic** column alongside the RAG candidates.
+The RAG match (job A) answers *"is THIS exact asset already covered?"* — a **precision** tool that ranks the
+best few, so it deliberately leaves out same-topic pages off the asset's specific angle. Reviewers want the
+opposite too: *"show me EVERY page we own on this topic."* That's a **recall/completeness** need (job B), and
+the reranker structurally can't serve it (proven — rejected-experiments table). So ship a second column.
 
-**Column: `Topic pages we own`** — for each asset, *every* existing English page whose title/URL contains the asset's topic term(s). It's a plain keyword filter, so it **cannot silently drop a page** — if you own 15 "psychometric" pages, all 15 appear, every time.
+**Column: `Topic pages we own`** — for each asset, the dense blended **top-50** pages (the same retrieval as
+job A, but WITHOUT the rerank truncation to 15, foreign excluded). Semantic, so it catches synonyms.
 
-How it's built (two parts — smart label, dumb match):
-1. **Topic keywords (LLM, one pass):** an agent reads each asset title and emits 1–3 **distinctive** topic terms (e.g. `psychometric`, `resume screening`, `time to hire`) — *avoiding* generic words (`hiring/test/assessment/guide`) that would match everything.
-2. **Deterministic match (no AI):** list every English page whose title/URL contains a keyword, with:
-   - **light stemming** so `screening`/`screener`/`screen` all match (this is what catches `/ai-resume-screener/` for a "resume screening" asset);
-   - **foreign-language pages excluded** (ISO-code first path segment — `/de/`, `/fr/`…);
-   - **over-generic keywords dropped** (if one keyword matches > ~80 pages it's too broad — skip it), and the displayed list capped (~30) with the true count shown.
+Why this, and not the old keyword catalogue (2026-07 study, de-biased labels):
+- The relevant pages were never missing — they sit at **dense ranks 15-75**; the rerank top-15 cut lost them.
+  De-biased recall **@15 ≈ 0.34 → @50 ≈ 0.66 → @75 ≈ 0.79** just by widening K. The recall list is simply
+  *the dense pass, shown wider* — no new model, no LLM, no decomposition (all tested, none beat widening K).
+- The previous **deterministic keyword catalogue was retired.** Being literal it **missed synonyms** — a
+  psychometric page titled only "Personality Assessment" never matched the `psychometric` keyword — and added
+  little the semantic dense list doesn't already cover. The semantic top-N catches those synonyms and needs no
+  keyword list, stemming, or generic-term tuning.
 
-This is a **companion, not a replacement**: the RAG verdict still decides build/reuse; the catalogue gives the human the full neighbourhood. The one honest limit — it's literal: a relevant page whose title shares *no* keyword (e.g. a psychometric page titled only "Personality Assessment") won't appear under that term; search the sibling term too.
+This is a **companion, not a replacement** for the verdict: the job-A RAG short-list + LLM still decides
+build/reuse; the job-B top-50 gives the human the full neighbourhood. Honest limit — de-biased recall@50 ≈ 0.66
+(≈ 1 in 3 relevant still beyond rank 50); set `RECALL_N` ≈ 75 for ≈ 0.79 if completeness matters more than
+catalogue length. `RECALL_N`, `TOPK`, `N_RETRIEVE`, and α are all tunable in `rag.py`.
