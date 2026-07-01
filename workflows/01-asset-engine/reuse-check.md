@@ -30,7 +30,7 @@ empty. The reuse check fills them — each produced by exactly one stage, so the
 | Column | What it holds | Produced by |
 |---|---|---|
 | **RAG candidates** | **JOB A (precision)** — top-15 best existing pages (blended retrieve → reranked), each as `Title — link (rerank score)` | Stage 2 — precision path |
-| **Topic pages we own** | **JOB B (recall)** — the **semantic recall list**: dense blended **top-50** on the asset's topic (no rerank cut), each as `Title — link` | Stage 2 — recall path |
+| **Topic pages we own** | **JOB B (recall)** — the **recall list**: dense blended **top-50** (no rerank cut) **∪ a DF-gated keyword tail** for exact-entity pages dense buries, each as `Title — link` | Stage 2 — recall path |
 | **Reference links** | one consolidated, de-duped list of every link above — the set to fetch when building the asset | Stage 2 — assembly |
 | **Reuse verdict** | one of: 🟢 Already have it · 🟡 Improve existing · 🟠 Build from parts · 🔴 Brand new | Stage 3 — LLM |
 | **Chosen links** | the verdict's actual link(s) — **a subset of RAG candidates**; blank for Brand new | Stage 3 — LLM |
@@ -98,12 +98,18 @@ For each asset idea in `clubbed-ideas`:
    that reads the query + each page and scores true relevance far better than cosine — and keep the **top 15**
    (foreign-language pages already excluded). This is the precise short-list the LLM judge reads.
 5. **JOB B — recall (Topic pages we own).** Take the dense blended **top-50** (NO rerank, NO truncation to 15),
-   foreign excluded. This is the human completeness view — see "Recall path". The reranker is deliberately
-   NOT applied here: it optimises precision-to-the-asset's-angle and so *demotes* on-topic/off-angle siblings,
-   which is exactly what the recall job must keep.
+   foreign excluded, **then union in a DF-gated keyword tail** (below). This is the human completeness view —
+   see "Recall path". The reranker is deliberately NOT applied here: it optimises precision-to-the-asset's-angle
+   and so *demotes* on-topic/off-angle siblings, which is exactly what the recall job must keep.
+   - **Keyword tail (hybrid).** Dense ranking still buries *exact-entity* pages whose relevance is lexical, not
+     angular — e.g. for "AI Resume Screening vs Skills Testing", the page `/ai-resume-screener/` sits at dense
+     rank 63. So after the dense top-50, append pages matched by the idea's curated `topic_keywords.json`
+     phrases, but **only from DF-gated phrases** (a phrase matching > `MAXDF_KW`=25 corpus pages is too generic
+     and dropped, e.g. "skills testing"→111), capped at `KW_ADD`=12 net-new pages, dense-ordered. It only adds
+     (never removes), so recall can't drop: on the benchmark it lifts dense@50 **0.656 → 0.692** (17/50 assets).
 6. Write into `clubbed-ideas.csv`, one pass — **links only, no page content**:
    - **RAG candidates** = the top-15 (job A) as `Title — link (rerank score)`;
-   - **Topic pages we own** = the top-50 (job B) as `Title — link`;
+   - **Topic pages we own** = the dense top-50 + keyword tail (job B) as `Title — link`;
    - **Reference links** = the de-duped union of the two (plain URLs) — the fetch list for content creation.
 
 > **Why two separate paths?** The two consumers conflict. The **LLM judge** wants the *most precise* few
@@ -346,16 +352,21 @@ opposite too: *"show me EVERY page we own on this topic."* That's a **recall/com
 the reranker structurally can't serve it (proven — rejected-experiments table). So ship a second column.
 
 **Column: `Topic pages we own`** — for each asset, the dense blended **top-50** pages (the same retrieval as
-job A, but WITHOUT the rerank truncation to 15, foreign excluded). Semantic, so it catches synonyms.
+job A, but WITHOUT the rerank truncation to 15, foreign excluded) **plus a DF-gated keyword tail**. Semantic
+catches synonyms; the keyword tail catches exact-entity pages dense buries.
 
-Why this, and not the old keyword catalogue (2026-07 study, de-biased labels):
+Why this design (2026-07 study, de-biased labels):
 - The relevant pages were never missing — they sit at **dense ranks 15-75**; the rerank top-15 cut lost them.
   De-biased recall **@15 ≈ 0.34 → @50 ≈ 0.66 → @75 ≈ 0.79** just by widening K. The recall list is simply
   *the dense pass, shown wider* — no new model, no LLM, no decomposition (all tested, none beat widening K).
-- The previous **deterministic keyword catalogue was retired.** Being literal it **missed synonyms** — a
-  psychometric page titled only "Personality Assessment" never matched the `psychometric` keyword — and added
-  little the semantic dense list doesn't already cover. The semantic top-N catches those synonyms and needs no
-  keyword list, stemming, or generic-term tuning.
+- **Keyword catalogue: retired as the SOLE source, restored as a bounded tail.** A pure literal catalogue
+  misses synonyms (a "Personality Assessment" page never matched the `psychometric` keyword). But the reverse
+  also happens — dense misses *exact-entity* pages whose relevance is lexical not angular (`/ai-resume-screener/`
+  @ rank 63 for the resume-screening asset). Dense and lexical fail on **different** pages, so the fix is a
+  **union**, not a choice: dense top-50 ∪ a keyword tail from the idea's curated `topic_keywords.json`, gated to
+  **specific** phrases only (DF ≤ `MAXDF_KW`) and capped (`KW_ADD`). Union-only ⇒ recall can't drop; measured
+  lift on the benchmark **0.656 → 0.692** (17/50 assets). The old catalogue's failure was being literal-*only*
+  and ungated; a df-gated tail on top of the semantic list keeps the synonym coverage AND the entity coverage.
 
 This is a **companion, not a replacement** for the verdict: the job-A RAG short-list + LLM still decides
 build/reuse; the job-B top-50 gives the human the full neighbourhood. Honest limit — de-biased recall@50 ≈ 0.66
