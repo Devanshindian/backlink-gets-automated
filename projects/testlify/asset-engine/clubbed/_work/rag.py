@@ -20,7 +20,24 @@ EMB_MODEL = "voyage-4-large"     # best general embedding model on the free tier
 RERANK_MODEL = "rerank-2.5"      # best reranker on the free tier
 ALPHA = 0.5            # title weight in blended score (1-ALPHA = body); tunable
 N_RETRIEVE = 40        # dense candidates before reranking (>= TOPK)
-TOPK = 15              # RAG candidate LINKS kept per idea (links only — no content stored)
+TOPK = 15              # RAG candidate LINKS kept per idea — JOB A (precision, for the LLM judge)
+RECALL_N = 75          # JOB B (recall, human catalogue): dense top-N shown, NO rerank truncation.
+                       # 2026-07 recall study (DE-BIASED labels, ~25 relevant/asset): relevant
+                       # pages sit at dense ranks 15-75; the rerank top-15 cut loses them.
+                       # dense recall@K: @15≈0.34 @25≈0.47 @40≈0.59 @50≈0.66 @75≈0.78 @100≈0.82.
+                       # Set to 75 (hybrid recall ≈0.81) — the free +0.12 over K=50; natural ceiling
+                       # ~0.85 beyond which extra pages are off-angle noise. Lever is K (tunable).
+                       # Decomposition / query-rewrite tested → no gain over widening K.
+# ── HYBRID keyword top-up on Job B (2026-07 follow-up) ────────────────────────
+# Dense ranking BURIES exact-entity pages that literal matching catches: e.g. for
+# "AI Resume Screening vs Skills Testing", the page /ai-resume-screener/ ("AI resume
+# screener") sits at dense rank 63 (just past RECALL_N) because the query's dominant
+# angle is "vs skills testing / accuracy". Fix: after the dense top-50, UNION in pages
+# matched by the idea's curated topic keywords (topic_keywords.json), but ONLY from
+# DF-gated (specific, not generic) phrases so we add an entity tail, not a flood.
+MAXDF_KW = 25          # a keyword phrase matching > this many corpus pages is too generic → dropped
+                       # (e.g. "skills testing" → 111 pages; "resume screening" → 5, kept)
+KW_ADD   = 12          # cap on net-new keyword pages appended to the dense catalogue per idea
 CHUNK_CHARS = 4800
 OVERLAP = 600
 MAX_ITEMS = 64
@@ -75,6 +92,65 @@ def rerank(query, docs, top_k):
               {"query": query, "documents": docs, "model": RERANK_MODEL,
                "top_k": top_k, "return_documents": False})
     return [(r["index"], r["relevance_score"]) for r in d["data"]]
+
+LOCALES = {"ar","pl","it","pt-br","no","ja","da","es","de","el","sv","nl","fr",
+           "pt","zh","ko","ru","tr","hi","id","th","vi"}
+def foreign(u):
+    # translation duplicates: URL's first path segment is an ISO locale code
+    m = re.match(r"https?://(?:www\.)?[^/]+/([^/]+)/", u or "")
+    return bool(m and m.group(1).lower() in LOCALES)
+
+# ── keyword top-up helpers (Job B hybrid) ────────────────────────────────────
+_KW_STOP = {"the","a","an","of","for","and","or","to","in","on","with","how",
+            "what","is","are","your","you","vs","that","this"}
+def _stem(w):
+    for suf in ("ing", "ers", "er", "ed", "es", "s"):   # crude: screening/screener → screen
+        if len(w) > len(suf) + 2 and w.endswith(suf):
+            return w[:-len(suf)]
+    return w
+def _kw_toks(s):
+    return {_stem(w) for w in re.findall(r"[a-z0-9]+", (s or "").lower())
+            if w not in _KW_STOP and len(w) > 1}
+
+def build_keyword_postings(urls, tmap):
+    """Inverted index stemmed-token -> set(url) over title+URL-slug (non-foreign pages)."""
+    postings = defaultdict(set)
+    for u in urls:
+        if foreign(u):
+            continue
+        slug = re.sub(r"https?://[^/]+", "", u).replace("/", " ").replace("-", " ")
+        for t in _kw_toks(tmap.get(u, "")) | _kw_toks(slug):
+            postings[t].add(u)
+    return postings
+
+def keyword_hits(phrases, postings):
+    """Union of pages matching any DF-gated phrase (all of its stemmed tokens present)."""
+    hits = set()
+    for p in phrases or []:
+        toks = _kw_toks(p)
+        if not toks:
+            continue
+        sets = [postings.get(t, set()) for t in toks]
+        if not all(sets):                      # a token absent from the corpus → no match
+            continue
+        m = set.intersection(*sets)
+        if 1 <= len(m) <= MAXDF_KW:            # drop generic phrases (too many matches)
+            hits |= m
+    return hits
+
+def load_topic_keywords(path):
+    if not path or not os.path.exists(path):
+        return {}
+    return {k["i"]: k.get("keywords", []) for k in json.load(open(path, encoding="utf-8"))}
+
+def catalogue_for(dense_order, idx, kwmap, postings, recall_n=RECALL_N, kw_add=KW_ADD):
+    """Job B catalogue = dense top-recall_n  ∪  DF-gated keyword tail (dense-ordered, capped)."""
+    recall = dense_order[:recall_n]
+    seen = set(recall)
+    rank = {u: i for i, u in enumerate(dense_order)}
+    khits = keyword_hits(kwmap.get(idx, []), postings)
+    tail = [u for u in sorted(khits, key=lambda u: rank.get(u, 1 << 30)) if u not in seen][:kw_add]
+    return recall + tail
 
 def chunks(text):
     text = (text or "").strip()
@@ -182,6 +258,11 @@ def do_retrieve(clubbed_csv, idx_dir, content_csv):
         u = (row.get("URL") or "").strip()
         cmap[u] = (row.get("Full content") or ""); tmap[u] = (row.get("Title") or "")
 
+    # hybrid keyword top-up (Job B): curated per-idea phrases + corpus inverted index
+    postings = build_keyword_postings(urls, tmap)
+    kwmap = load_topic_keywords(os.path.join(os.path.dirname(os.path.abspath(__file__)), "topic_keywords.json"))
+    print(f"retrieve: keyword index {len(postings)} tokens | {len(kwmap)} keyworded ideas", file=sys.stderr)
+
     with open(clubbed_csv, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f); fields = reader.fieldnames; rows = list(reader)
 
@@ -202,15 +283,26 @@ def do_retrieve(clubbed_csv, idx_dir, content_csv):
         bestbody = np.full(len(urls), -1.0, dtype=np.float32)
         np.maximum.at(bestbody, body_uidx, bsim)        # best chunk per page
         blended = ALPHA * tsim + (1 - ALPHA) * bestbody
-        cand = [urls[k] for k in np.argsort(blended)[::-1][:N_RETRIEVE]]
-        # rerank the dense top-N with the cross-encoder
-        docs = [((tmap[u][:200] + "\n" + cmap[u])[:RERANK_DOC_CHARS]) for u in cand]
+        dense_order = [urls[k] for k in np.argsort(blended)[::-1] if not foreign(urls[k])]
+
+        # ── JOB A — precision (for the LLM judge): rerank dense top-N, keep TOPK ──
+        cand = dense_order[:N_RETRIEVE]
+        docs = [((tmap[u][:200] + "\n" + cmap[u])[:RERANK_DOC_CHARS]).replace("\x00", " ").strip() or "(no content)"
+                for u in cand]
         order = rerank(queries[n] or r.get("Asset", ""), docs, min(TOPK, len(cand)))
         top = [(cand[i], sc) for i, sc in order]
-        # LINKS ONLY — we store the candidate links, not their content. Any step that needs the
-        # page text (Stage-3 judge, content creation) fetches it on demand: look it up by URL in
-        # content-database.csv (already holds Full content) or web-fetch the live page.
+
+        # ── JOB B — recall (human catalogue): dense top-RECALL_N ∪ DF-gated keyword tail ──
+        # (2026-07 de-biased study: widening K 15→50 lifts recall ~0.34→0.66 (~0.79 @75);
+        #  rerank truncation to 15 is what loses on-topic siblings. The keyword tail then
+        #  recovers exact-entity pages dense buries past K — e.g. /ai-resume-screener/ @63.)
+        catalogue = catalogue_for(dense_order, n, kwmap, postings)
+
+        # LINKS ONLY — store links, not content. Any step needing page text fetches on
+        # demand from content-database.csv (holds Full content) or the live page.
         r["RAG candidates"] = "; ".join(f"{tmap[u]} — {u} ({sc:.2f})" for u, sc in top)
+        r["Topic pages we own"] = "; ".join(f"{tmap[u]} — {u}" for u in catalogue)
+        r["Reference links"] = "; ".join(dict.fromkeys([u for u, _ in top] + catalogue))
         if (n + 1) % 50 == 0:
             print(f"   retrieved {n+1}/{len(rows)}", file=sys.stderr)
 
@@ -218,11 +310,54 @@ def do_retrieve(clubbed_csv, idx_dir, content_csv):
         w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(rows)
     print(f"retrieve: wrote candidates for {len(rows)} ideas", file=sys.stderr)
 
+def do_catalogue(clubbed_csv, idx_dir, content_csv):
+    """Cheap Job-B-only refresh: recompute 'Topic pages we own' + 'Reference links'
+    (dense top-50 ∪ keyword tail) WITHOUT re-running the reranker. Reuses the existing
+    'RAG candidates' cell (Job A) for the reference union. No rerank calls."""
+    Vt, Mt = load_vecs(os.path.join(idx_dir, "title"))
+    Vb, Mb = load_vecs(os.path.join(idx_dir, "body"))
+    urls = [m["url"] for m in Mt]
+    uidx = {u: i for i, u in enumerate(urls)}
+    body_uidx = np.array([uidx[m["url"]] for m in Mb])
+    tmap = {}
+    for row in csv.DictReader(open(content_csv, encoding="utf-8")):
+        u = (row.get("URL") or "").strip(); tmap[u] = (row.get("Title") or "")
+    postings = build_keyword_postings(urls, tmap)
+    kwmap = load_topic_keywords(os.path.join(os.path.dirname(os.path.abspath(__file__)), "topic_keywords.json"))
+    print(f"catalogue: {len(urls)} pages | {len(postings)} tokens | {len(kwmap)} keyworded ideas", file=sys.stderr)
+
+    with open(clubbed_csv, newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f); fields = reader.fieldnames; rows = list(reader)
+
+    def query_text(r):
+        a = re.sub(r"\s+", " ", re.sub(r"\([^)]*\)", " ", (r.get("Asset") or ""))).strip()
+        return a or (r.get("Asset") or "").strip() or (r.get("Distinct angle") or "").strip() or "untitled"
+    Q = embed([query_text(r) for r in rows], "query"); Q /= (np.linalg.norm(Q, axis=1, keepdims=True) + 1e-9)
+
+    for n, r in enumerate(rows):
+        q = Q[n]
+        bestbody = np.full(len(urls), -1.0, dtype=np.float32)
+        np.maximum.at(bestbody, body_uidx, Vb @ q)
+        blended = ALPHA * (Vt @ q) + (1 - ALPHA) * bestbody
+        dense_order = [urls[k] for k in np.argsort(blended)[::-1] if not foreign(urls[k])]
+        catalogue = catalogue_for(dense_order, n, kwmap, postings)
+        rag_urls = re.findall(r"(https?://\S+?)(?:\s*\([\-\d.]+\))?(?:;|$)", r.get("RAG candidates", ""))
+        r["Topic pages we own"] = "; ".join(f"{tmap[u]} — {u}" for u in catalogue)
+        r["Reference links"] = "; ".join(dict.fromkeys(rag_urls + catalogue))
+        if (n + 1) % 50 == 0:
+            print(f"   catalogue {n+1}/{len(rows)}", file=sys.stderr)
+
+    with open(clubbed_csv, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fields); w.writeheader(); w.writerows(rows)
+    print(f"catalogue: refreshed Job-B catalogue for {len(rows)} ideas", file=sys.stderr)
+
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd == "index":
         do_index(sys.argv[2], sys.argv[3])
     elif cmd == "retrieve":
         do_retrieve(sys.argv[2], sys.argv[3], sys.argv[4])
+    elif cmd == "catalogue":
+        do_catalogue(sys.argv[2], sys.argv[3], sys.argv[4])
     else:
         sys.exit("unknown command")
