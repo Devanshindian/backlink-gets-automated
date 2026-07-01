@@ -21,11 +21,12 @@ RERANK_MODEL = "rerank-2.5"      # best reranker on the free tier
 ALPHA = 0.5            # title weight in blended score (1-ALPHA = body); tunable
 N_RETRIEVE = 40        # dense candidates before reranking (>= TOPK)
 TOPK = 15              # RAG candidate LINKS kept per idea — JOB A (precision, for the LLM judge)
-RECALL_N = 50          # JOB B (recall, human catalogue): dense top-N shown, NO rerank truncation.
+RECALL_N = 75          # JOB B (recall, human catalogue): dense top-N shown, NO rerank truncation.
                        # 2026-07 recall study (DE-BIASED labels, ~25 relevant/asset): relevant
                        # pages sit at dense ranks 15-75; the rerank top-15 cut loses them.
-                       # dense recall@K: @15≈0.34 @25≈0.47 @40≈0.59 @50≈0.66 @75≈0.79.
-                       # Lever is K — bump RECALL_N to ~75 for ~0.79 recall (more reviewer scan).
+                       # dense recall@K: @15≈0.34 @25≈0.47 @40≈0.59 @50≈0.66 @75≈0.78 @100≈0.82.
+                       # Set to 75 (hybrid recall ≈0.81) — the free +0.12 over K=50; natural ceiling
+                       # ~0.85 beyond which extra pages are off-angle noise. Lever is K (tunable).
                        # Decomposition / query-rewrite tested → no gain over widening K.
 # ── HYBRID keyword top-up on Job B (2026-07 follow-up) ────────────────────────
 # Dense ranking BURIES exact-entity pages that literal matching catches: e.g. for
