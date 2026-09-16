@@ -1,79 +1,80 @@
-# Backlink Automation — a reusable machine for earning backlinks
+# Backlink Machine
 
-A system that earns backlinks for any company. It's built as **recipes** (general, reusable processes)
-that you *run* for a specific client to produce **dishes** (the actual results). Testlify is the first
-client the machine was run for.
+A system that earns backlinks for a company.
+
+The problem it solves: a company wants other sites to link to it, because search engines still
+treat a link as a vote. Buying links is risky and asking for them does not scale. The only
+durable answer is publishing things good enough that people choose to link to them.
+
+So the machine does that, end to end.
+
+---
+
+## The five stages
+
+It is a **factory line with numbered stations**, not one clever model. Each station is a folder,
+numbered by its position in the line. Each has one command you run, and it writes named files to
+disk. The next station reads those files by name. Nothing is passed in memory.
+
+| Stage | What it does |
+|---|---|
+| **00 Foundation** | Catalogues every page the company already has, and what each one ranks for |
+| **01 Brand context** | Learns how the company writes and what it actually sells |
+| **02 Asset engine** | Finds ideas worth building. Three independent methods, merged and deduplicated |
+| **03 Content machine** | Turns one chosen idea into a write-ready evidence bundle |
+| **04 Write phase** | Plans, designs and writes the article, then checks it a dozen ways |
+
+Stages 00 to 02 run **once per company**. Stages 03 and 04 run **once per article**.
+
+---
+
+## The three rules it is built on
+
+**Code counts, AI judges.** If a thing can be counted, a script counts it. If two sensible
+people could disagree, the model decides. Nothing arguable goes to a script, and nothing
+countable goes to a model.
+
+**Nothing is invented.** Every fact carries an ID, a word-for-word quote and a live URL. A
+separate step whose only job is checking opens that URL and confirms the number is really on the
+page. It is the most expensive step in the system, and the right place for the budget.
+
+**Every step writes a named file.** So a crash resumes where it stopped, every number in the
+finished article traces back to the step that produced it, and you can open the state anywhere.
+
+---
+
+## The guard pattern
+
+The same shape repeats everywhere an AI touches the text:
+
+```
+code measures  →  AI edits  →  code checks what actually changed  →  any failure, the original ships
+```
+
+An automated edit can fail to improve something. It can never damage it.
 
 ---
 
 ## Where to start
 
-1. **`CLAUDE.md`** — the project brain. Read this first: what we're building, how the folders work, the core rules.
-2. **`workflows/`** — the recipes (start with `01-asset-engine/`).
-3. **`projects/testlify/`** — a worked example: the recipes actually run for a real company.
+1. **`README.md`** — you are here
+2. **`CLAUDE.md`** — the conventions every engine obeys
+3. **`workflows/`** — the reusable recipes, company-agnostic
+4. **`projects/testlify/`** — a worked example, the recipes run for a real company
 
 ---
 
-## The core idea (recipe vs. dish vs. reference)
+## What is proven, and what is not
 
-| Folder | What it is | Reusable? |
-|---|---|---|
-| **`workflows/`** | The **recipes** — general, step-by-step processes written with placeholders (`[COMPANY]`, `[WEBSITE]`). | ✅ any company |
-| **`projects/<client>/`** | The **dishes** — the real outputs of running a recipe (brand brain, content map, idea banks, campaigns). | ❌ client-specific |
-| **`research/`** | The **reference shelf** — orchestrations, strategies, and sources the recipes are built *from*. | reference only |
+**Proven.** It runs end to end. Articles have been through it. The catalogue and cost figures
+are measured, not estimated.
 
----
+**Not proven.** Whether the articles earn links. None have been live long enough to say.
 
-## Folder map
-
-```
-Backlink gets Automated/
-├── CLAUDE.md                     ← read first: project brain + progress log
-├── README.md                     ← this file
-├── workflows/                    ← THE RECIPES (general, reusable)
-│   ├── 00-foundation/            ← sitemap/content-database pull, brand-brain, Semrush top-pages
-│   │   └── scripts/              ← reddit scraper, content-database builder, brand-brain tools
-│   ├── 01-asset-engine/          ← the asset engine
-│   │   ├── idea-backlog/         ← Method 1 competitor-study · Method 2 model-other-niches · Method 3 study-trends
-│   │   └── reuse-check.md        ← RAG + LLM reuse check (do we already own this asset?)
-│   └── 02-content-engine.workflow.md
-├── research/                     ← raw reference (orchestrations · strategies · sources)
-└── projects/testlify/            ← worked example (the "dish")
-    ├── brand-brain/              ← the company's voice/product/data/authority
-    ├── content-database.*        ← catalogue of every existing page  (regenerated — see note)
-    └── asset-engine/
-        ├── competitor-study/     ← Method 1 outputs
-        ├── model-other-niches/   ← Method 2 outputs
-        ├── study-trends/         ← Method 3 outputs (Reddit-driven tensions → ideas)
-        └── clubbed/              ← the three idea pools merged + reuse-checked → the review deliverable
-```
+**Partly proven.** Reusability. The brand-context layer ran end to end on a second company. The
+full pipeline has only ever run on one.
 
 ---
 
-## The asset-engine flow (the main pipeline)
-
-1. **Foundation** (`workflows/00-foundation/`) — build the content database (every page the site has) and the brand brain.
-2. **Idea backlog** (`workflows/01-asset-engine/idea-backlog/`) — three independent idea methods:
-   - **Method 1 — Competitor study:** what already earns links in the niche.
-   - **Method 2 — Model other niches:** proven link-bait *formats* from adjacent niches.
-   - **Method 3 — Study trends:** Reddit-driven *tensions* turned into timely assets.
-3. **Merge + reuse check** (`reuse-check.md`) — the three pools are merged into one `clubbed-ideas` file, then each idea is checked against existing content via **RAG (retrieve) → LLM judgment (verdict)**, plus a deterministic **topic catalogue** of every page we already own on that topic.
-4. **Review** — the clubbed pool is shipped as a self-contained HTML viewer for human review.
-
-The reuse check stores **links only** — page text is fetched on demand (looked up in the content database, or web-fetched live) when judging or building content.
-
----
-
-## Note on excluded files
-
-Large data files are included **compressed** (the raw versions exceed GitHub's 100 MB limit or just bloat the
-repo). Decompress before use:
-- `projects/testlify/content-database.csv.gz` (~23 MB) → `gunzip -k content-database.csv.gz` (the 103 MB catalogue — every page's full content; this is what the reuse-check RAG runs against).
-- `projects/testlify/asset-engine/competitor-study/_work/competitor-formats-master.csv.gz` (~9 MB) → `gunzip -k …` (the competitor-formats master dataset).
-- `projects/testlify/asset-engine/competitor-study/competitor-study-raw.tar.gz` (~8 MB) and `…/study-trends/study-trends-raw.tar.gz` (~13 MB) → `tar -xzf …` to restore each method's `_raw/` scrape data (Semrush exports, Reddit dumps).
-
-Only truly **derived/regenerable** bulk is left out:
-- the embeddings index (`content-index/`, ~159 MB) — rebuild with `rag.py index` from the content database;
-- `node_modules/`, backups (`*.bak`), OS files, and the GitHub-Pages publish clone (`_pages-repo/`).
-
-Credentials are **never** in this repo — they live in a `chmod 600` file outside the project tree.
+*This repository is a snapshot of the reusable recipes and one worked example. The live system
+continues in a private repo.*
